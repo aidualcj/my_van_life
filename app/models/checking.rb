@@ -1,3 +1,3 @@
 class Checking < ApplicationRecord
-  has_many :booking
+  belongs_to :booking
 end

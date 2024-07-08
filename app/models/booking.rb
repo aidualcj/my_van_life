@@ -1,7 +1,7 @@
 class Booking < ApplicationRecord
-  belongs_to :message
   belongs_to :van
   belongs_to :user
-  belongs_to :checking
+  has_one :checking
+  has_one :message
 
 end
