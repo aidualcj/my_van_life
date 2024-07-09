@@ -1,0 +1,41 @@
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <div class="container-fluid">
+    <%= link_to "/", class: "navbar-brand" do %>
+      <%= image_tag ("logo.png") %>
+    <% end %>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto pe-3">
+        <li class="nav-item active">
+            <%= link_to "Accueil", "/", class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Nos offres", "vans_path", class: "nav-link" %>
+          </li>
+        <% if user_signed_in? %>
+          <li class="nav-item dropdown">
+           <i class="fa-regular fa-user avatar nav-link" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <%= link_to "My Bookings", "#", class: "dropdown-item" %>
+              <%= link_to "My Vans", "#", class: "dropdown-item" %>
+              <%= link_to "My Messages", "#", class: "dropdown-item" %>
+
+              <%= link_to "Log out", "#", class: "dropdown-item", data: {turbo_method: :delete} %>
+              <% link_to "Log out", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>
+            </div>
+          </li>
+        <% else %>
+          <!--li class="nav-item"-->
+            <%= link_to new_user_session_path, class: "nav-link"  do %>
+              <i class="fa-regular fa-user"></i>
+            <% end %>
+          <!--/li-->
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
