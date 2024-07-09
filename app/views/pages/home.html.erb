@@ -1,6 +1,6 @@
 <h1>Bienvenue sur My Van Life</h1>
 <p>Explorez et réservez des vans pour vos aventures.</p>
 <%= link_to 'Voir les offres de vans', vans_path %>
-<% if user_signed_in? %>
+<% if @user_signed_in %>
   <%= link_to 'Ajouter un Van', new_van_path %>
 <% end %>

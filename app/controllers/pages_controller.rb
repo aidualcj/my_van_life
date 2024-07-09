@@ -3,6 +3,7 @@ class PagesController < ApplicationController
 
   def home
     # Code pour la page d'accueil
+    @user_signed_in = user_signed_in?
   end
 
   def dashboard
