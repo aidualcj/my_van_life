@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_09_133955) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_09_201905) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -45,15 +45,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_09_133955) do
   create_table "bookings", force: :cascade do |t|
     t.string "status"
     t.decimal "price"
-    t.string "date"
-    t.bigint "message_id", null: false
     t.bigint "van_id", null: false
     t.bigint "user_id", null: false
-    t.bigint "checking_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["checking_id"], name: "index_bookings_on_checking_id"
-    t.index ["message_id"], name: "index_bookings_on_message_id"
+    t.string "start_date"
+    t.string "end_date"
     t.index ["user_id"], name: "index_bookings_on_user_id"
     t.index ["van_id"], name: "index_bookings_on_van_id"
   end
@@ -117,8 +114,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_09_133955) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "bookings", "checkings"
-  add_foreign_key "bookings", "messages"
   add_foreign_key "bookings", "users"
   add_foreign_key "bookings", "vans"
   add_foreign_key "messages", "bookings"
