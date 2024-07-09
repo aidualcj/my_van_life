@@ -1,0 +1,12 @@
+<h1>Réservations pour <%= @van.name %></h1>
+<ul>
+  <% @bookings.each do |booking| %>
+    <li>
+      Du <%= booking.start_date %> au <%= booking.end_date %>
+      <%= link_to 'Éditer', edit_van_booking_path(@van, booking) %>
+      <%= link_to 'Annuler', van_booking_path(@van, booking), method: :delete, data: { confirm: 'Êtes-vous sûr?' } %>
+    </li>
+  <% end %>
+</ul>
+<%= link_to 'Nouvelle Réservation', new_van_booking_path(@van) %>
+<%= link_to 'Retour au Van', van_path(@van) %>

@@ -1,0 +1,21 @@
+<h1><% if @checking.checking_type == 'pickup' %>
+    Nouvel État des Lieux à la Prise
+  <% else %>
+    Nouvel État des Lieux au Retour
+  <% end %>
+</h1>
+<%= form_with model: [@booking, @checking], local: true do |form| %>
+  <%= form.hidden_field :checking_type %>
+  <div>
+    <%= form.label :status %>
+    <%= form.text_field :status %>
+  </div>
+  <div>
+    <%= form.label :comments %>
+    <%= form.text_area :comments %>
+  </div>
+  <div>
+    <%= form.submit 'Soumettre' %>
+  </div>
+<% end %>
+<%= link_to 'Retour', van_path(@booking.van) %>

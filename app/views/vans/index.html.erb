@@ -1,0 +1,10 @@
+<h1>Liste des Vans</h1>
+<%= link_to 'Ajouter un Van', new_van_path if user_signed_in? %>
+<ul>
+  <% @vans.each do |van| %>
+    <li>
+      <%= link_to van.name, van_path(van) %>
+      - <%= van.price %> EUR/jour
+    </li>
+  <% end %>
+</ul>

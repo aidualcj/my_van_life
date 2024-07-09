@@ -1,0 +1,12 @@
+<h1>Tableau de Bord</h1>
+<h2>Mes Vans</h2>
+<%= link_to 'Ajouter un Van', new_van_path %>
+<ul>
+  <% @vans.each do |van| %>
+    <li>
+      <%= link_to van.name, van_path(van) %>
+      - <%= link_to 'Éditer', edit_van_path(van) %>
+      - <%= link_to 'Supprimer', van_path(van), method: :delete, data: { confirm: 'Êtes-vous sûr?' } %>
+    </li>
+  <% end %>
+</ul>
