@@ -32,7 +32,7 @@ van3.save!
 van4 = Van.create(title:"Van4", description:"Van4 description - magnifique pour partir en vacances et profiter en famille, en amis, en couple... pour 4 personnes maximum", price_per_day: 80, user_id: User.last.id, photos:"")
 van4.save!
 
-booking1 = Booking.create(start_date: "2021-12-01", end_date: "2021-12-10", status: "pending", user_id: User.first.id, van_id: Van.first.id, price: van1.price_per_day * 10)
+booking1 = Booking.create(start_date: "2021-12-01", end_date: "2021-12-10", status: "attente", user_id: User.first.id, van_id: Van.first.id, price: van1.price_per_day * 10)
 booking1.save!
 
 # checking1 = Checking.new(details: "Checking1 details", photo: "Checking1 photo", comment: "Checking1 comment", status: "pending")
@@ -40,13 +40,13 @@ booking1.save!
 
 # booking1.update!(checking: checking1)
 
-booking2 = Booking.create(start_date: "2021-12-01", end_date: "2021-12-10", status: "pending", user_id: User.first.id, van_id: Van.first.id, price: van2.price_per_day * 10)
+booking2 = Booking.create(start_date: "2021-12-01", end_date: "2021-12-10", status: "attente", user_id: User.first.id, van_id: Van.first.id, price: van2.price_per_day * 10)
 booking2.save!
 
-booking3 = Booking.create(start_date: "2021-12-01", end_date: "2021-12-10", status: "pending", user_id: User.last.id, van_id: Van.last.id, price: van3.price_per_day * 10)
+booking3 = Booking.create(start_date: "2021-12-01", end_date: "2021-12-10", status: "attente", user_id: User.last.id, van_id: Van.last.id, price: van3.price_per_day * 10)
 booking3.save!
 
-booking4 = Booking.create(start_date: "2021-12-01", end_date: "2021-12-10", status: "pending", user_id: User.last.id, van_id: Van.last.id, price: van4.price_per_day * 10)
+booking4 = Booking.create(start_date: "2021-12-01", end_date: "2021-12-10", status: "attente", user_id: User.last.id, van_id: Van.last.id, price: van4.price_per_day * 10)
 booking4.save!
 
 review1 = Review.new(comment: "Review1 comment", rating: 4, van_id: Van.first.id)
