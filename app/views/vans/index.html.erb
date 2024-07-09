@@ -1,10 +1,18 @@
-<h1>Liste des Vans</h1>
-<%= link_to 'Ajouter un Van', new_van_path if user_signed_in? %>
-<ul>
+<div class="vans-title">
+  <h1>Tous les vans</h1>
+</div>
+
+<div class="vans-list">
   <% @vans.each do |van| %>
-    <li>
-      <%= link_to van.name, van_path(van) %>
-      - <%= van.price %> EUR/jour
-    </li>
+    <div class="small-van-card">
+      <%= image_tag 'roadpass-zRetWvOnbf0-unsplash.jpg', height: 200, width: 300, alt: 'Van Photo' %>
+
+      <div class="van-details">
+        <h3><%= van.title %></h3>
+        <p><%= van.description %></p>
+        <p class="price"><%= number_to_currency(van.price_per_day, unit: '€', precision: 0) %>/jour</p>
+        <%= link_to "En savoir plus", van_path(van), class: "btn btn-primary" %>
+      </div>
+    </div>
   <% end %>
-</ul>
+</div>
