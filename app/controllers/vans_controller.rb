@@ -37,7 +37,7 @@ class VansController < ApplicationController
 
   def destroy
     @van.destroy
-    redirect_to vans_url, notice: 'VVotre van est de retour au garage'
+    redirect_to vans_url, notice: 'Votre van est de retour au garage'
   end
 
   private
@@ -47,6 +47,6 @@ class VansController < ApplicationController
   end
 
   def van_params
-    params.require(:van).permit(:name, :description, :price)
+    params.require(:van).permit(:title, :description, :price_per_day, :location, :photos)
   end
 end

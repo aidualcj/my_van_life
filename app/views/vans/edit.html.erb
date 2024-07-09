@@ -1,19 +1,10 @@
-<h1>Éditer le Van</h1>
-<%= form_with model: @van, local: true do |form| %>
-  <div>
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+<div class="container mt-3">
+  <div class="d-flex align-items-center">
+    <%= link_to vans_path(@van) do %>
+      <i class="fa-solid fa-arrow-left text-dark"></i>
+    <% end %>
+    <%= link_to 'Retour à la liste des Vans', vans_path, class: "ms-2 text-dark fw-bold link-underline-light" %>
   </div>
-  <div>
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
-  <div>
-    <%= form.label :price %>
-    <%= form.number_field :price %>
-  </div>
-  <div>
-    <%= form.submit 'Mettre à jour' %>
-  </div>
-<% end %>
-<%= link_to 'Retour à la liste des Vans', vans_path %>
+  <h1 class="text-center">Éditer le Van</h1>
+  <%= render "form", class:"m-3"%>
+</div>
