@@ -1,6 +1,6 @@
-<h1><%= @van.name %></h1>
+<h1><%= @van.title %></h1>
 <p><%= @van.description %></p>
-<p>Prix: <%= @van.price %> EUR/jour</p>
+<p>Prix: <%= @van.price_per_day %> EUR/jour</p>
 <%= link_to 'Réserver ce Van', new_van_booking_path(@van) %>
 <% if user_signed_in? && @van.user == current_user %>
   <%= link_to 'Éditer ce Van', edit_van_path(@van) %>
