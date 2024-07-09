@@ -1,0 +1,10 @@
+<h1><%= @van.name %></h1>
+<p><%= @van.description %></p>
+<p>Prix: <%= @van.price %> EUR/jour</p>
+<%= link_to 'Réserver ce Van', new_van_booking_path(@van) %>
+<%= link_to 'Éditer ce Van', edit_van_path(@van) %>
+<%= link_to 'Retour à la liste des Vans', vans_path %>
+
+<h2>État des Lieux</h2>
+<%= link_to 'État des lieux à la prise', new_booking_checking_path(@booking, checking_type: 'pickup') %>
+<%= link_to 'État des lieux au retour', new_booking_checking_path(@booking, checking_type: 'return') %>

@@ -1,0 +1,8 @@
+<h1>Vos Messages</h1>
+<ul>
+  <% @messages.each do |message| %>
+    <li>
+      <%= link_to message.content.truncate(30), booking_messages_path(message.booking) %>
+    </li>
+  <% end %>
+</ul>

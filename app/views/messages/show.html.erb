@@ -1,0 +1,9 @@
+<h1>Messages pour la Réservation <%= @booking.id %></h1>
+<ul>
+  <% @messages.each do |message| %>
+    <li>
+      <strong><%= message.user.email %>:</strong> <%= message.content %>
+    </li>
+  <% end %>
+</ul>
+<%= link_to 'Nouvelle Conversation', new_message_path(@booking) %>
