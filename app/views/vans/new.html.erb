@@ -1,19 +1,5 @@
-<h1>Ajouter un Nouveau Van</h1>
-<%= form_with model: @van, local: true do |form| %>
-  <div>
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-  <div>
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
-  <div>
-    <%= form.label :price %>
-    <%= form.number_field :price %>
-  </div>
-  <div>
-    <%= form.submit 'Créer' %>
-  </div>
-<% end %>
-<%= link_to 'Retour à la liste des Vans', vans_path %>
+<div class="container mt-3">
+  <h1 class="text-center">Ajouter un Nouveau Van</h1>
+  <%= render "form", class:"m-3" %>
+  <%= link_to 'Retour à la liste des Vans', vans_path %>
+</div>

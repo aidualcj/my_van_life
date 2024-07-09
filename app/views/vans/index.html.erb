@@ -3,8 +3,8 @@
 <ul>
   <% @vans.each do |van| %>
     <li>
-      <%= link_to van.name, van_path(van) %>
-      - <%= van.price %> EUR/jour
+      <%= link_to van.title, van_path(van) %>
+      - <%= van.price_per_day %> EUR/jour
     </li>
   <% end %>
 </ul>
