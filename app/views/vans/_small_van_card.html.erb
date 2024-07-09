@@ -1,0 +1,12 @@
+<div class="small-van-card">
+  <%= image_tag 'roadpass-zRetWvOnbf0-unsplash.jpg', height: 200, width: 300, alt: 'Van Photo' %>
+
+  <div class="van-details">
+    <h3><%= van.title %></h3>
+    <p><%= van.description %></p>
+    <p class="price"><%= number_to_currency(van.price_per_day, unit: '€', precision: 0) %>/jour</p>
+  </div>
+
+  <%= link_to "En savoir plus", van_path(van), class: "btn btn-primary" %>
+  </div>
+</div>
