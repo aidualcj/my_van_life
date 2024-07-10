@@ -40,13 +40,19 @@
       <div class="col-md-4">
       <h3>Dates de ton séjour :</h3>
         <div class="card mb-3">
-          <div class="card-body d-flex bg-light p-0">
+          <div class="card-body d-flex bg-light p-3">
             <%= simple_form_for [@van, @booking], html: { local: true } do |f| %>
               <%= f.error_notification %>
-              <div class="d-flex justify-content-between p-3">
-                <%= f.input :start_date, :label => 'Début de ton séjour', class: "p-5"%>
-                <%= f.input :end_date, :label => 'Fin de ton séjour', class: "p-5"%>
+              <div class="d-flex">
+                <%= f.input :start_date, :label => 'Début de ton séjour'%>
+                <%= f.input :end_date, :label => 'Fin de ton séjour'%>
               </div>
+                <%= f.input :name, label: 'Nom', input_html: { value: current_user.name, readonly: true } %>
+                <%= f.input :phone_number, label: 'Numéro de téléphone', input_html: { value: current_user.phone_number, readonly: true } %>
+                <%= f.input :email, label: 'Email', input_html: { value: current_user.email, readonly: true } %>
+                <%= f.input :email, label: 'Adresse', input_html: { value: current_user.address, readonly: true } %>
+
+
               <%= f.submit 'Réserver', class: "btn btn-primary" %>
             <% end %>
           </div>
