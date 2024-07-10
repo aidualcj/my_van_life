@@ -51,7 +51,7 @@
                 <%= f.input :email, label: 'Email', input_html: { value: current_user.email, readonly: true } %>
                 <%= f.input :email, label: 'Adresse', input_html: { value: current_user.address, readonly: true } %>
 
-                <div id="total_price" data-target="booking.totalPrice" class="my-3">Prix Total: 0€</div>
+                <div id="total_price" data-target="booking.totalPrice" class="my-3">Prix Total: <%= @booking.price %> €</div>
 
               <%= f.submit 'Réserver', class: "btn btn-primary" %>
             <% end %>

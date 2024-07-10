@@ -1,0 +1,20 @@
+<div class="container">
+  <h1>Réservations de mes Vans</h1>
+
+  <% if @reservations.any? %>
+    <ul>
+      <% @reservations.each do |reservation| %>
+        <li>
+          <strong>Van :</strong> <%= link_to reservation.van.title, van_path(reservation.van) %><br>
+          <strong>Client :</strong> <%= reservation.user.name %><br>
+          <strong>Date de début :</strong> <%= reservation.start_date %><br>
+          <strong>Date de fin :</strong> <%= reservation.end_date %><br>
+          <strong>Status :</strong> <%= reservation.status %><br>
+          <strong>Prix :</strong> <%= number_to_currency(reservation.price, unit: '€') %>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>Vous n'avez pas encore de réservations pour vos vans.</p>
+  <% end %>
+</div>

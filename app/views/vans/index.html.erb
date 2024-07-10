@@ -14,6 +14,7 @@
         <h3><%= van.title %></h3>
         <p><%= van.description %></p>
         <p class="price"><%= number_to_currency(van.price_per_day, unit: '€', precision: 0) %>/jour</p>
+        <p>Ce van est proposé par : <%= van.user.name %></p>
         <%= link_to "En savoir plus", van_path(van), class: "btn btn-primary" %>
       </div>
     </div>

@@ -1,5 +1,5 @@
 class Booking < ApplicationRecord
-  STATUS = %w(attente acceptée refusée annulée)
+  STATUS = %w(attente acceptée terminée refusée annulée)
   belongs_to :van
   belongs_to :user
   has_one :checking
