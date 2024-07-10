@@ -1,0 +1,48 @@
+<!-- app/views/bookings/show.html.erb -->
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header">
+          <h3>Reservation validée</h3>
+          <p>Dans <%= distance_of_time_in_words_to_now(@booking.start_date) %> : <%= l(@booking.start_date, format: :long) %> avec <%= @booking.van.owner_name %></p>
+        </div>
+        <div class="card-body">
+          <h5>Vos informations</h5>
+          <ul class="list-unstyled">
+            <li><strong>Nom:</strong> <%= current_user.name %></li>
+            <li><strong>Téléphone:</strong> <%= current_user.phone %></li>
+            <li><strong>Email:</strong> <%= current_user.email %></li>
+            <li><strong>Date de naissance:</strong> <%= l(current_user.birthdate) %> | <%= current_user.age %> ans</li>
+            <li><strong>Adresse:</strong> <%= current_user.address %></li>
+          </ul>
+          <h5>Commentaire</h5>
+          <form>
+            <div class="form-group">
+              <textarea class="form-control" rows="3" placeholder="Sera transmis à <%= @booking.van.owner_name %>"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Transmettre</button>
+          </form>
+        </div>
+        <div class="card-footer">
+          <%= link_to 'Modifier les informations', edit_user_registration_path, class: 'btn btn-secondary' %>
+          <%= link_to 'Annuler la réservation', booking_path(@booking), method: :delete, data: { confirm: 'Êtes-vous sûr ?' }, class: 'btn btn-danger' %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <img src="<%= @booking.van.image_url %>" class="img-fluid" alt="Van image">
+          <h5>Informations</h5>
+          <ul class="list-unstyled">
+            <!--<li><strong>Cabinet maitrisant l'ostéopathie douce.</strong></li>-->
+            <li><strong>Téléphone:</strong> <%= @booking.van.owner_phone %></li>
+            <li><strong>Adresse:</strong> <%= @booking.van.owner_address %></li>
+            <!--<li><strong>Accessibilité:</strong> Parking gratuit en face du cabinet. Ascenseur 3ème étage.</li>-->
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

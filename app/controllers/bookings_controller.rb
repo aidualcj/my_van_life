@@ -1,6 +1,7 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: [:edit, :update, :destroy]
   before_action :set_van, only: [:index, :new, :create]
+  before_action :authenticate_user!, only: [:new, :create, :show]
 
   def index
     @bookings = @van.bookings
@@ -17,6 +18,10 @@ class BookingsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def show
+    @booking = Booking.find(params[:id])
   end
 
   def edit
