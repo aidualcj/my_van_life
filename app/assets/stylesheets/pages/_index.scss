@@ -5,7 +5,7 @@
   background: #F4F4F4;
   display: flex;
   align-items: center;
-  justify-content: center; /* Centrer les éléments horizontalement */
+  justify-content: center;
   height: 100px;
   padding: 0px 50px;
   color: rgba(0,0,0,0.3);
@@ -17,7 +17,7 @@
 }
 
 .footer-links span {
-  margin-right: 15px; /* Espace entre le texte et les icônes */
+  margin-right: 15px;
   color: black;
   opacity: 0.6;
   font-size: 16px;

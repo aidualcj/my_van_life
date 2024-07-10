@@ -1,1 +1,23 @@
 // Specific CSS for your home-page
+// app/assets/stylesheets/pages/_home.scss
+
+.container {
+  text-align: center;
+  margin-top: 50px;
+
+  h1 {
+    font-size: 32px;
+    color: #333; /* Couleur du texte pour le titre principal */
+    margin-bottom: 10px;
+  }
+
+  h2 {
+    font-size: 24px;
+    color: #666; /* Couleur du texte pour le slogan */
+    margin-bottom: 20px;
+  }
+
+  .btn {
+    margin-top: 20px;
+  }
+}
