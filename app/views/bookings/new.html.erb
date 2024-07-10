@@ -1,4 +1,4 @@
-<h1>Nouvelle Réservation pour <%= @van.name %></h1>
+<h1>Nouvelle Réservation pour <%= @van.title %></h1>
 <%= form_with model: [@van, @booking], local: true do |form| %>
   <div>
     <%= form.label :start_date %>
