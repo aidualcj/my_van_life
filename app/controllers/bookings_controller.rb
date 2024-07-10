@@ -16,7 +16,7 @@ class BookingsController < ApplicationController
     @booking.van = @van
     @booking.user = current_user
     @booking.status = "attente"
-
+0000
     if @booking.save
       redirect_to booking_path(@booking), notice: 'Booking was successfully created.'
     else
@@ -56,6 +56,6 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:start_date, :end_date, :user_id, :van_id)
+    params.require(:booking).permit(:start_date, :end_date, :user_id, :van_id, :price)
   end
 end

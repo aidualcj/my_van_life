@@ -3,7 +3,7 @@ class Van < ApplicationRecord
   has_many :bookings
   has_many :reviews
   has_many :messages
-  has_many_attached :photos
+  has_one_attached :photos
 
   geocoded_by :location  # Indique que la géolocalisation doit se faire par rapport à l'attribut `location`
 

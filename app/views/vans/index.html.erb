@@ -5,8 +5,11 @@
 <div class="vans-list">
   <% @vans.each do |van| %>
     <div class="small-van-card">
-      <%= image_tag 'roadpass-zRetWvOnbf0-unsplash.jpg', height: 200, width: 300, alt: 'Van Photo' %>
-
+      <% if van.photos.attached? %>
+        <%= cl_image_tag van.photos.key, class: "img-fluid"%>
+      <% else %>
+        <%= image_tag 'roadpass-zRetWvOnbf0-unsplash.jpg', class: "img-fluid" %>
+        <% end %>
       <div class="van-details">
         <h3><%= van.title %></h3>
         <p><%= van.description %></p>

@@ -3,6 +3,6 @@
     <%= f.input :description %>
     <%= f.input :price_per_day, :label => 'Prix par jours (en €)' %>
     <%= f.input :location, :label => 'Où te situes-tu ?' %>
-    <%= f.input :photos, as: :file, :label => 'Les plus belles photos de ton van :' %>
+    <%= f.input :photos, as: :file%>
     <%= f.submit 'Valider', class: "btn btn-primary" %>
   <% end %>

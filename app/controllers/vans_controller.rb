@@ -17,10 +17,11 @@ class VansController < ApplicationController
   def create
     @van = Van.new(van_params)
     @van.user = current_user
+    @van.status = "available"
     if @van.save
       redirect_to @van, notice: 'Votre van est pret a vivre de belles aventures!'
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -28,10 +29,13 @@ class VansController < ApplicationController
   end
 
   def update
+    @van = Van.new(van_params)
+    @van.user = current_user
+    @van.status = "available"
     if @van.update(van_params)
       redirect_to @van, notice: 'Votre van est beaux comme un camion'
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
