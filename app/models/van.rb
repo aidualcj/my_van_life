@@ -3,7 +3,7 @@ class Van < ApplicationRecord
   has_many :bookings
   has_many :reviews
   has_many :messages
-  has_many_attached :photos
+  has_one_attached :photos
 
   validates :title, presence: true
   validates :description, presence: true, length: { minimum: 100, message: "doit comporter au moins 100 caractères" }

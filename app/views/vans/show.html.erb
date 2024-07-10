@@ -7,7 +7,11 @@
   <div class="van-container">
     <div class="van-header">
       <div class="van-image">
-        <%= image_tag 'roadpass-zRetWvOnbf0-unsplash.jpg', alt: @van.title %>
+        <% if @van.photos.attached? %>
+          <%= cl_image_tag @van.photos.key, class: "img-fluid"%>
+        <% else %>
+          <%= image_tag 'roadpass-zRetWvOnbf0-unsplash.jpg', class: "img-fluid" %>
+        <% end %>
       </div>
       <div class="van-title">
         <h1><%= @van.title %></h1>

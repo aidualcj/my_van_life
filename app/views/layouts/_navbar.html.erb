@@ -20,11 +20,12 @@
           <li class="nav-item dropdown">
            <i class="fa-regular fa-user avatar dropdown-toggle nav-link" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "My Bookings", bookings_path, class: "dropdown-item" %>
-              <%= link_to "My Vans", vans_path, class: "dropdown-item" %>
-              <%= link_to "My Messages", messages_path, class: "dropdown-item" %>
+              <%= link_to "Ajouter un van", new_van_path, class: "dropdown-item" %>
+              <%= link_to "Mes Réservations", bookings_path, class: "dropdown-item" %>
+              <%= link_to "Mes Vans", vans_path, class: "dropdown-item" %>
+              <%= link_to "Mes Messages", messages_path, class: "dropdown-item" %>
 
-              <%= link_to "Log out", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>
+              <%= link_to "Se déconnecter", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>
             </div>
           </li>
         <% else %>
