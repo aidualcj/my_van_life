@@ -14,17 +14,17 @@
             <%= link_to "Accueil", "/", class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Nos offres", "vans_path", class: "nav-link" %>
+            <%= link_to "Nos offres", vans_path, class: "nav-link" %>
           </li>
         <% if user_signed_in? %>
           <li class="nav-item dropdown">
            <i class="fa-regular fa-user avatar nav-link" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "My Bookings", "#", class: "dropdown-item" %>
-              <%= link_to "My Vans", "#", class: "dropdown-item" %>
-              <%= link_to "My Messages", "#", class: "dropdown-item" %>
+              <%= link_to "My Bookings", van_booking_path, class: "dropdown-item" %>
+              <%= link_to "My Vans", vans_path, class: "dropdown-item" %>
+              <%= link_to "My Messages", messages_path, class: "dropdown-item" %>
 
-              <%= link_to "Log out", "#", class: "dropdown-item", data: {turbo_method: :delete} %>
+              <%= link_to "Log out", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>
               <% link_to "Log out", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>
             </div>
           </li>
