@@ -1,15 +1,56 @@
-<h1>Nouvelle Réservation pour <%= @van.title %></h1>
-<%= form_with model: [@van, @booking], local: true do |form| %>
-  <div>
-    <%= form.label :start_date %>
-    <%= form.date_field :start_date %>
+  <div class="d-flex align-items-center m-3">
+    <%= link_to vans_path(@van) do %>
+      <i class="fa-solid fa-arrow-left text-dark"></i>
+    <% end %>
+    <%= link_to 'Retour à la liste des Vans', vans_path, class: "ms-2 text-dark fw-bold link-underline-light" %>
   </div>
-  <div>
-    <%= form.label :end_date %>
-    <%= form.date_field :end_date %>
-  </div>
-  <div>
-    <%= form.submit 'Réserver' %>
-  </div>
-<% end %>
-<%= link_to 'Retour aux Réservations', van_bookings_path(@van) %>
+<div class="container mt-3">
+   <!-- Site info -->
+    <div class="bg-white">
+      <div class="container p-3">
+        <div class="row">
+          <div class="col-md-8">
+            <h3 class="m-3">Nouvelle Réservation pour <%= @van.title %></h3>
+            <p class="my-0 mx-3">Nous vous accompagnons dans l'organisation de vos roadtrips, partout en France et en Europe.</p>
+            <p class="my-0 mx-3">Prêt à faire partie d'une grande aventure ?</p>
+            <p class="my-0 mx-3">Il ne te reste qu'à réserver ton van pour profiter pleinement !</p>
+          </div>
+          <div class="col-md-4">
+            <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=1642&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" class="w-100 rounded">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row m-3">
+      <div class="col-md-8">
+        <h3>Ton van</h3>
+          <div class="card mb-3">
+            <div class="card-body d-flex bg-light p-0">
+              <%= image_tag 'roadpass-zRetWvOnbf0-unsplash.jpg', height: 200, width: 300, alt: 'Van Photo' %>
+
+              <div class="van-details p-3">
+                <h3><%= @van.title %></h3>
+                <p><%= @van.description %></p>
+                <p class="price mb-0"><%= number_to_currency(@van.price_per_day, unit: '€', precision: 0) %>/jour</p>
+              </div>
+            </div>
+          </div>
+      </div>
+      <div class="col-md-4">
+      <h3>Dates de ton séjour :</h3>
+        <div class="card mb-3">
+          <div class="card-body d-flex bg-light p-0">
+            <%= simple_form_for [@van, @booking], html: { local: true } do |f| %>
+              <div class="d-flex p-3">
+                <%= f.input :start_date, :label => 'Début de ton séjour', class: "p-3"%>
+                <%= f.input :end_date, :label => 'Fin de ton séjour', class: "p-3"%>
+              </div>
+              <%= f.submit 'Réserver', class: "btn btn-primary" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+</div>
