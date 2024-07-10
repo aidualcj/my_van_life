@@ -9,13 +9,10 @@
           <h5>Vos informations</h5>
           <ul class="list-unstyled">
             <li><strong>Nom:</strong> <%= @booking.user.name %></li>
-            <li><strong>Téléphone:</strong> <%= @booking.user.phone %></li>
+            <li><strong>Téléphone:</strong> <%= @booking.user.phone_number %></li>
             <li><strong>Email:</strong> <%= @booking.user.email %></li>
-            <li><strong>Date de naissance:</strong> <%= @booking.user.birthdate.strftime("%d %B %Y") %> | <%= @booking.user.age %> ans</li>
             <li><strong>Adresse:</strong> <%= @booking.user.address %></li>
           </ul>
-          <h5>Commentaire</h5>
-          <p><%= @booking.comment %></p>
         </div>
         <div class="card-footer">
           <%= link_to 'Modifier les informations', edit_user_registration_path, class: 'btn btn-secondary' %>
@@ -26,12 +23,11 @@
     <div class="col-md-4">
       <div class="card">
         <div class="card-body">
-          <img src="<%= @booking.van.image_url %>" class="img-fluid" alt="Van image">
-          <h5>Informations</h5>
-          <ul class="list-unstyled">
-            <li><strong>Téléphone:</strong> <%= @booking.van.owner_phone %></li>
-            <li><strong>Adresse:</strong> <%= @booking.van.owner_address %></li>
-          </ul>
+          <% if @booking.van.photos.attached? %>
+            <%= cl_image_tag @booking.van.photos[0].key, class: "img-fluid"%>
+          <% else %>
+            <%= image_tag 'roadpass-zRetWvOnbf0-unsplash.jpg', class: "img-fluid" %>
+          <% end %>
         </div>
       </div>
     </div>
