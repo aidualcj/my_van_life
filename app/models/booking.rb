@@ -9,5 +9,6 @@ class Booking < ApplicationRecord
   validates :van_id, presence: true
   validates :start_date, presence: true
   validates :end_date, presence: true
+  validates :price, presence: true
   validates :status, inclusion: { in: STATUS }
 end

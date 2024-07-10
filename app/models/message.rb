@@ -4,5 +4,5 @@ class Message < ApplicationRecord
   has_many :users, through: :vans, through: :bookings
 
   validates :content, presence: true
-  validates :user_id, presence: true
+  validates :van_id, presence: true
 end
