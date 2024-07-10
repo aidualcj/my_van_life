@@ -20,16 +20,16 @@ tristan = User.create(name:"Tristan", email:"ibaneztristan@gmail.com", password:
 solene = User.create(name:"Solene", email:"solene.baudic@gmail.com", password: "123456", encrypted_password:"123456", phone_number:"06 12 34 56 78", address:"1 rue de la paix, 75001 Paris")
 # solene.save!
 
-van1 = Van.create(title:"Van1", description:"Van1 description - magnifique pour partir en vacances et profiter en famille, en amis, en couple... pour 4 personnes maximum", price_per_day: 50, user_id: User.first.id, photos:"")
+van1 = Van.create(title:"Van1", description:"Van1 description - magnifique pour partir en vacances et profiter en famille, en amis, en couple... pour 4 personnes maximum", price_per_day: 50, user_id: User.first.id, photos:"", status:"available", location:"Paris")
 van1.save!
 
-van2 = Van.create(title:"Van2", description:"Van2 description - magnifique pour partir en vacances et profiter en famille, en amis, en couple... pour 4 personnes maximum", price_per_day: 60, user_id: User.first.id, photos:"")
+van2 = Van.create(title:"Van2", description:"Van2 description - magnifique pour partir en vacances et profiter en famille, en amis, en couple... pour 4 personnes maximum", price_per_day: 60, user_id: User.first.id, photos:"", status:"available", location:"Lille")
 van2.save!
 
-van3 = Van.create(title:"Van3", description:"Van3 description - magnifique pour partir en vacances et profiter en famille, en amis, en couple... pour 4 personnes maximum", price_per_day: 70, user_id: User.last.id, photos:"")
+van3 = Van.create(title:"Van3", description:"Van3 description - magnifique pour partir en vacances et profiter en famille, en amis, en couple... pour 4 personnes maximum", price_per_day: 70, user_id: User.last.id, photos:"", status:'unavailable', location:"Bordeaux")
 van3.save!
 
-van4 = Van.create(title:"Van4", description:"Van4 description - magnifique pour partir en vacances et profiter en famille, en amis, en couple... pour 4 personnes maximum", price_per_day: 80, user_id: User.last.id, photos:"")
+van4 = Van.create(title:"Van4", description:"Van4 description - magnifique pour partir en vacances et profiter en famille, en amis, en couple... pour 4 personnes maximum", price_per_day: 80, user_id: User.last.id, photos:"", status:'unavailable', location:"Lyon")
 van4.save!
 
 review1 = Review.new(comment: "Review1 comment", rating: 4, van_id: Van.first.id)
@@ -55,17 +55,18 @@ review4.save!
 
 # message4 = Message.create(content: "Message4 content", van_id: van4.id, booking_id: Booking.last.id)
 # message4.save!
-booking1 = Booking.create(start_date: "2021-12-01", end_date: "2021-12-10", status: "attente", user_id: User.first.id, van_id: Van.first.id, price: van1.price_per_day * 10, checking_id:Checking.first.id)
+
+booking1 = Booking.create(start_date: "2021-12-01", end_date: "2021-12-10", status: "attente", user_id: User.first.id, van_id: Van.first.id, price: van1.price_per_day * 10)
 booking1.save!
 
-checking1 = Checking.create!(details: "Checking1 details", photo: "Checking1 photo", comment: "Checking1 comment", status: "attente", check_in_date: "2021-12-01", check_out_date: "2021-12-10")
-checking1.save!
-
-booking2 = Booking.create(start_date: "2021-12-01", end_date: "2021-12-10", status: "attente", user_id: User.first.id, van_id: Van.first.id, price: van2.price_per_day * 10, checking_id: Checking.first.id)
+booking2 = Booking.create(start_date: "2021-12-01", end_date: "2021-12-10", status: "attente", user_id: User.first.id, van_id: Van.first.id, price: van2.price_per_day * 10)
 booking2.save!
 
-booking3 = Booking.create(start_date: "2021-12-01", end_date: "2021-12-10", status: "attente", user_id: User.last.id, van_id: Van.last.id, price: van3.price_per_day * 10, checking_id: Checking.first.id)
+booking3 = Booking.create(start_date: "2021-12-01", end_date: "2021-12-10", status: "attente", user_id: User.last.id, van_id: Van.last.id, price: van3.price_per_day * 10)
 booking3.save!
 
-booking4 = Booking.create(start_date: "2021-12-01", end_date: "2021-12-10", status: "attente", user_id: User.last.id, van_id: Van.last.id, price: van4.price_per_day * 10, checking_id: Checking.first.id)
+booking4 = Booking.create(start_date: "2021-12-01", end_date: "2021-12-10", status: "attente", user_id: User.last.id, van_id: Van.last.id, price: van4.price_per_day * 10)
 booking4.save!
+
+checking1 = Checking.create!(details: "Checking1 details", photo: "Checking1 photo", comment: "Checking1 comment", status: "attente", check_in_date: "2021-12-01", check_out_date: "2021-12-10", booking_id: Booking.first.id)
+checking1.save!
