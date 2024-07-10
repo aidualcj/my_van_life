@@ -1,26 +1,34 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: [:edit, :update, :destroy]
-  before_action :set_van, only: [:index, :new, :create]
+  before_action :set_van, only: [:new, :create]
+  before_action :authenticate_user!, only: [:new, :create, :show]
 
   def index
-    @bookings = @van.bookings
+    @bookings = Booking.all
   end
 
   def new
-    @booking = @van.bookings.new
+    @booking = Booking.new
   end
 
   def create
-    @booking = @van.bookings.new(booking_params)
+    @booking = Booking.new(booking_params)
+    @booking.van = @van
+    @booking.user = current_user
+
     if @booking.save
-      redirect_to van_bookings_path(@van), notice: 'Booking was successfully created.'
+      redirect_to booking_path(@booking), notice: 'Booking was successfully created.'
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
+  def show
+    @booking = Booking.find(params[:id])
+  end
+
   def edit
-    # @booking est défini par set_booking
+    @booking = booking_path
   end
 
   def update

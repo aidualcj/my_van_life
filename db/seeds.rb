@@ -8,16 +8,16 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 # db/seeds.rb
-loic = User.create(name:"Loic", email:"carpentier.loic19@gmail.com", password: "123456", encrypted_password:"123456", phone_number:"06 12 34 56 78", address:"1 rue de la paix, 75001 Paris")
+loic = User.create(name:"Loic", email:"carpentier.loic19@gmail.com", password: "123456", phone_number:"06 12 34 56 78", address:"1 rue de la paix, 75001 Paris")
 # loic.save!
 
-jenna = User.create(name:"Jenna", email:"jennaandria@gmail.com", password: "123456", encrypted_password:"123456", phone_number:"06 12 34 56 78", address:"1 rue de la paix, 75001 Paris")
+jenna = User.create(name:"Jenna", email:"jennaandria@gmail.com", password: "123456", phone_number:"06 12 34 56 78", address:"1 rue de la paix, 75001 Paris")
 # jenna.save!
 
-tristan = User.create(name:"Tristan", email:"ibaneztristan@gmail.com", password: "123456", encrypted_password:"123456", phone_number:"06 12 34 56 78", address:"1 rue de la paix, 75001 Paris")
+tristan = User.create(name:"Tristan", email:"ibaneztristan@gmail.com", password: "123456", phone_number:"06 12 34 56 78", address:"1 rue de la paix, 75001 Paris")
 # tristan.save!
 
-solene = User.create(name:"Solene", email:"solene.baudic@gmail.com", password: "123456", encrypted_password:"123456", phone_number:"06 12 34 56 78", address:"1 rue de la paix, 75001 Paris")
+solene = User.create(name:"Solene", email:"solene.baudic@gmail.com", password: "123456", phone_number:"06 12 34 56 78", address:"1 rue de la paix, 75001 Paris")
 # solene.save!
 
 van1 = Van.create(title:"Van1", description:"Van1 description - magnifique pour partir en vacances et profiter en famille, en amis, en couple... pour 4 personnes maximum", price_per_day: 50, user_id: User.first.id, photos:"", status:"available", location:"Paris")
