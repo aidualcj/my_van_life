@@ -17,7 +17,7 @@ class VansController < ApplicationController
   def create
     @van = Van.new(van_params)
     @van.user = current_user
-    @van.status = "available"
+    @van.status = "disponible"
     if @van.save
       redirect_to @van, notice: 'Votre van est pret a vivre de belles aventures!'
     else
@@ -29,7 +29,6 @@ class VansController < ApplicationController
   end
 
   def update
-    @van = Van.new(van_params)
     @van.user = current_user
     @van.status = "available"
     if @van.update(van_params)
@@ -44,6 +43,14 @@ class VansController < ApplicationController
     redirect_to vans_url, notice: 'Votre van est de retour au garage'
   end
 
+  def my_vans
+    @vans = current_user.vans
+  end
+
+  def reservations
+    @reservations = current_user.van_reservations
+  end
+
   private
 
   def set_van
@@ -52,5 +59,9 @@ class VansController < ApplicationController
 
   def van_params
     params.require(:van).permit(:title, :description, :price_per_day, :location, :photos)
+  end
+
+  def van_reservations
+    Booking.joins(:van).where(vans: { user_id: self.id }).distinct
   end
 end

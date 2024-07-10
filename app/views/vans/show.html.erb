@@ -29,23 +29,33 @@
     <div class="van-price">
       <p>Prix: <%= @van.price_per_day %> EUR/jour</p>
     </div>
-    <div class="van-reserve">
-      <%= link_to 'Réserver ce Van', new_van_booking_path(@van), class: 'btn-reserve' %>
-    </div>
-    <div class="van-user">
-      <p>Ce van est proposé par : <%= @van.user.name %></p>
-    </div>
+    <% if user_signed_in? && @van.user == current_user %>
+      <div class="van-user">
+        <p>Ce van est proposé par : <%= @van.user.name %></p>
+      </div>
+    <% else %>
+      <div class="van-reserve">
+        <%= link_to 'Réserver ce Van', new_van_booking_path(@van), class: 'btn-reserve' %>
+      </div>
+      <div class="van-user">
+        <p>Ce van est proposé par : <%= @van.user.name %></p>
+      </div>
+    <% end %>
     <div class="van-reviews">
       <h2>Reviews</h2>
-      <% @van.reviews.each do |review| %>
-        <div class="review">
-          <div class="review-stars">
-            <% (1..5).each do |i| %>
-              <span class="star <%= 'filled' if review.rating >= i %>">★</span>
-            <% end %>
+      <% if @van.reviews.any?  %>
+        <% @van.reviews.each do |review| %>
+          <div class="review">
+            <div class="review-stars">
+              <% (1..5).each do |i| %>
+                <span class="star <%= 'filled' if review.rating >= i %>">★</span>
+              <% end %>
+            </div>
+            <p><%= review.comment %></p>
           </div>
-          <p><%= review.comment %></p>
-        </div>
+        <% end %>
+      <% else %>
+        <p><em>Aucun avis pour le moment</em></p>
       <% end %>
     </div>
   </div>

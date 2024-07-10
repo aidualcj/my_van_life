@@ -26,10 +26,10 @@ puts "Users Terminée"
 
 # Créer les vans
 puts "Creation vans..."
-van1 = Van.create!(title:"Van1", description:"Van1 description - magnifique pour partir en vacances et profiter en famille, en amis, en couple... pour 4 personnes maximum", price_per_day: 50, user_id: User.first.id, photos:"", status:"available", location:"Paris")
-van2 = Van.create!(title:"Van2", description:"Van2 description - magnifique pour partir en vacances et profiter en famille, en amis, en couple... pour 4 personnes maximum", price_per_day: 60, user_id: User.first.id, photos:"", status:"available", location:"Lille")
-van3 = Van.create!(title:"Van3", description:"Van3 description - magnifique pour partir en vacances et profiter en famille, en amis, en couple... pour 4 personnes maximum", price_per_day: 70, user_id: User.last.id, photos:"", status:'unavailable', location:"Bordeaux")
-van4 = Van.create!(title:"Van4", description:"Van4 description - magnifique pour partir en vacances et profiter en famille, en amis, en couple... pour 4 personnes maximum", price_per_day: 80, user_id: User.last.id, photos:"", status:'unavailable', location:"Lyon")
+van1 = Van.create!(title:"Van1", description:"Van1 description - magnifique pour partir en vacances et profiter en famille, en amis, en couple... pour 4 personnes maximum", price_per_day: 50, user_id: User.first.id, photos:"", status:"disponible", location:"Paris")
+van2 = Van.create!(title:"Van2", description:"Van2 description - magnifique pour partir en vacances et profiter en famille, en amis, en couple... pour 4 personnes maximum", price_per_day: 60, user_id: User.first.id, photos:"", status:"disponible", location:"Lille")
+van3 = Van.create!(title:"Van3", description:"Van3 description - magnifique pour partir en vacances et profiter en famille, en amis, en couple... pour 4 personnes maximum", price_per_day: 70, user_id: User.last.id, photos:"", status:'réservé', location:"Bordeaux")
+van4 = Van.create!(title:"Van4", description:"Van4 description - magnifique pour partir en vacances et profiter en famille, en amis, en couple... pour 4 personnes maximum", price_per_day: 80, user_id: User.last.id, photos:"", status:'réservé', location:"Lyon")
 puts "Vans Terminée"
 
 # Créer les reviews
@@ -42,10 +42,10 @@ puts "Reviews Terminée"
 
 # Créer les bookings
 puts "Creation bookings..."
-booking1 = Booking.create!(start_date: "2021-12-01", end_date: "2021-12-10", status: "attente", user_id: User.first.id, van_id: Van.first.id, price: van1.price_per_day * 10)
-booking2 = Booking.create!(start_date: "2021-12-01", end_date: "2021-12-10", status: "attente", user_id: User.first.id, van_id: Van.first.id, price: van2.price_per_day * 10)
-booking3 = Booking.create!(start_date: "2021-12-01", end_date: "2021-12-10", status: "attente", user_id: User.last.id, van_id: Van.last.id, price: van3.price_per_day * 10)
-booking4 = Booking.create!(start_date: "2021-12-01", end_date: "2021-12-10", status: "attente", user_id: User.last.id, van_id: Van.last.id, price: van4.price_per_day * 10)
+booking1 = Booking.create!(start_date: "2021-12-01", end_date: "2021-12-10", status: "refusée", user_id: User.first.id, van_id: Van.first.id, price: van1.price_per_day * 10)
+booking2 = Booking.create!(start_date: "2023-12-12", end_date: "2023-12-20", status: "annulée", user_id: User.first.id, van_id: Van.first.id, price: van2.price_per_day * 10)
+booking3 = Booking.create!(start_date: "2024-05-01", end_date: "2024-05-10", status: "terminée", user_id: User.last.id, van_id: Van.last.id, price: van3.price_per_day * 10)
+booking4 = Booking.create!(start_date: "2024-08-01", end_date: "2024-08-05", status: "attente", user_id: User.last.id, van_id: Van.last.id, price: van4.price_per_day * 10)
 puts "Bookings Terminée"
 
 # Créer les checkings

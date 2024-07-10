@@ -16,7 +16,8 @@ class BookingsController < ApplicationController
     @booking.van = @van
     @booking.user = current_user
     @booking.status = "attente"
-0000
+    @van.status = "réservée"
+    @booking.price = @van.price_per_day * (Date.parse(@booking.end_date) - Date.parse(@booking.start_date)).to_i
     if @booking.save
       redirect_to booking_path(@booking), notice: 'Booking was successfully created.'
     else
@@ -43,6 +44,10 @@ class BookingsController < ApplicationController
   def destroy
     @booking.destroy
     redirect_to van_bookings_path(@booking.van), notice: 'Booking was successfully destroyed.'
+  end
+
+  def my_bookings
+    @bookings = current_user.bookings
   end
 
   private
