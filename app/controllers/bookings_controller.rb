@@ -15,7 +15,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.van = @van
     @booking.user = current_user
-
+    @booking.status = "attente"
     if @booking.save
       redirect_to booking_path(@booking), notice: 'Booking was successfully created.'
     else
