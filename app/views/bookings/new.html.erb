@@ -42,9 +42,10 @@
         <div class="card mb-3">
           <div class="card-body d-flex bg-light p-0">
             <%= simple_form_for [@van, @booking], html: { local: true } do |f| %>
-              <div class="d-flex p-3">
-                <%= f.input :start_date, :label => 'Début de ton séjour', class: "p-3"%>
-                <%= f.input :end_date, :label => 'Fin de ton séjour', class: "p-3"%>
+              <%= f.error_notification %>
+              <div class="d-flex justify-content-between p-3">
+                <%= f.input :start_date, :label => 'Début de ton séjour', class: "p-5"%>
+                <%= f.input :end_date, :label => 'Fin de ton séjour', class: "p-5"%>
               </div>
               <%= f.submit 'Réserver', class: "btn btn-primary" %>
             <% end %>
