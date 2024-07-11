@@ -27,7 +27,7 @@
       <p><%= @van.description %></p>
     </div>
     <div class="van-price">
-      <p><%= @van.price_per_day %> €/jour</p>
+      <p>€<%= @van.price_per_day %> /jour</p>
     </div>
     <% if user_signed_in? && @van.user == current_user %>
       <div class="van-user">
