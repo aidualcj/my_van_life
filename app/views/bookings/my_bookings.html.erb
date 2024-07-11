@@ -5,7 +5,7 @@
       <% end %>
     </div>
   <div class="vans-title">
-    <h1>Toutes mes réservations</h1>
+    <h1>Mes réservations</h1>
   </div>
 
   <% if @bookings.any? %>
@@ -13,16 +13,19 @@
       <% @bookings.each do |booking| %>
         <div class="small-van-card">
           <p>Du <%= booking.start_date %> au <%= booking.end_date %></p>
+          <% if booking.status == "terminée" %>
+              <%= link_to "Ajouter un commentaire",  new_van_booking_review_path(booking, booking.van), class: "btn btn-primary" %>
+          <% end %>
           <% if booking.van.photos.attached? %>
             <%= cl_image_tag booking.van.photos.key, class: "img-fluid"%>
           <% else %>
             <%= image_tag 'roadpass-zRetWvOnbf0-unsplash.jpg', class: "img-fluid" %>
           <% end %>
           <div class="van-details">
-          <h3><%= booking.van.title %> - <%= booking.status.capitalize %></h3>
-            <div class="van-actions">
+            <h3><%= booking.van.title %> - <%= booking.status.capitalize %></h3>
+            <% if booking.status == "attente" %>
               <%= link_to 'Annuler', van_path(booking.van), method: :delete, data: { confirm: 'Êtes-vous sûr?' }, class: 'btn-delete' %>
-            </div>
+            <% end %>
             <p><%= booking.van.description %></p>
             <p class="price"><%= number_to_currency(booking.price, unit: '€', precision: 0) %>/jour</p>
             <p>Ce van est loué par : <%= booking.van.user.name %></p>

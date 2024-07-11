@@ -7,7 +7,11 @@
   <div class="van-container">
     <div class="van-header">
       <div class="van-image">
-        <%= image_tag 'roadpass-zRetWvOnbf0-unsplash.jpg', alt: @van.title %>
+        <% if @van.photos.attached? %>
+          <%= cl_image_tag @van.photos.key, class: "img-fluid"%>
+        <% else %>
+          <%= image_tag 'roadpass-zRetWvOnbf0-unsplash.jpg', class: "img-fluid" %>
+        <% end %>
       </div>
       <div class="van-title">
         <h1 class="van-title-font"><%= @van.title %></h1>
@@ -25,23 +29,33 @@
     <div class="van-price">
       <p><%= @van.price_per_day %> €/jour</p>
     </div>
-    <div class="van-reserve">
-      <%= link_to 'Réserver ce Van', new_van_booking_path(@van), class: 'btn-reserve' %>
-    </div>
-    <div class="van-user">
-      <p><em>Ce van est proposé par : <%= @van.user.name %></em></p>
-    </div>
+    <% if user_signed_in? && @van.user == current_user %>
+      <div class="van-user">
+        <p>Ce van est proposé par : <%= @van.user.name %></p>
+      </div>
+    <% else %>
+      <div class="van-reserve">
+        <%= link_to 'Réserver ce Van', new_van_booking_path(@van), class: 'btn-reserve' %>
+      </div>
+      <div class="van-user">
+        <p><em>Ce van est proposé par : <%= @van.user.name %></em></p>
+      </div>
+    <% end %>
     <div class="van-reviews">
       <h2>Avis</h2>
-      <% @van.reviews.each do |review| %>
-        <div class="review">
-          <div class="review-stars">
-            <% (1..5).each do |i| %>
-              <span class="star <%= 'filled' if review.rating >= i %>">★</span>
-            <% end %>
+      <% if @van.reviews.any?  %>
+        <% @van.reviews.each do |review| %>
+          <div class="review">
+            <div class="review-stars">
+              <% (1..5).each do |i| %>
+                <span class="star <%= 'filled' if review.rating >= i %>">★</span>
+              <% end %>
+            </div>
+            <p><%= review.comment %></p>
           </div>
-          <p><%= review.comment %></p>
-        </div>
+        <% end %>
+      <% else %>
+        <p><em>Aucun avis pour le moment</em></p>
       <% end %>
     </div>
   </div>
