@@ -1,6 +1,23 @@
 <div class="vans-title">
   <h1>Tous les vans</h1>
 </div>
+<div class="row justify-content-center">
+  <div class="col-sm-8 my-3">
+    <%= form_with url: vans_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "ou veux tu louer un van"
+        %>
+        <%= text_field_tag :dates,
+        params[:dates],
+            class: "form-control",
+            placeholder: "dates de loc",
+            data: { controller: "range-picker"  }%>
+      <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
 <div class="all d-flex">
   <div class="vans-list">
     <% @vans.each do |van| %>
@@ -27,3 +44,4 @@
             data-map-apikey-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
   </div>
   </div>
+<%= console %>

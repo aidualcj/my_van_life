@@ -29,6 +29,7 @@ puts "Users Terminée"
 # Créer les vans
 puts "Creation vans..."
 
+
 file_path = Rails.root.join('app/assets/images/van1.jpg')
 file = File.open(file_path)
 van1 = Van.create!(title: "Van1", description: "Van1 description - magnifique pour partir en vacances et profiter en famille, en amis, en couple... pour 4 personnes maximum", price_per_day: 50, user_id: User.first.id, status: "disponible", location: "Paris")
@@ -56,6 +57,7 @@ van4 = Van.create!(title:"Van4", description:"Van4 description - magnifique pour
 van4.photos.attach(io: file4, filename: "van4.jpg", content_type: "image/jpeg")
 van4.save
 file4.close
+
 
 puts "Vans Terminée"
 
