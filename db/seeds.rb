@@ -58,7 +58,6 @@ van4.photos.attach(io: file4, filename: "van4.jpg", content_type: "image/jpeg")
 van4.save
 file4.close
 
-
 puts "Vans Terminée"
 
 # Créer les reviews
