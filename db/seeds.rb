@@ -9,6 +9,8 @@
 #   end
 # db/seeds.rb
 # Supprimer les données existantes pour éviter les superpositions
+require "open-uri"
+
 Checking.destroy_all
 Booking.destroy_all
 Review.destroy_all
@@ -26,7 +28,13 @@ puts "Users Terminée"
 
 # Créer les vans
 puts "Creation vans..."
-van1 = Van.create!(title:"Van1", description:"Van1 description - magnifique pour partir en vacances et profiter en famille, en amis, en couple... pour 4 personnes maximum", price_per_day: 50, user_id: User.first.id, photos:"", status:"disponible", location:"Paris")
+
+file = URI.open("link")
+van1 = Van.create!(title:"Van1", description:"Van1 description - magnifique pour partir en vacances et profiter en famille, en amis, en couple... pour 4 personnes maximum", price_per_day: 50, user_id: User.first.id, status:"disponible", location:"Paris")
+van1.photo.attach(io: file, filename: "van1.png", content_type: "image/png")
+van1.save
+puts van1.name
+
 van2 = Van.create!(title:"Van2", description:"Van2 description - magnifique pour partir en vacances et profiter en famille, en amis, en couple... pour 4 personnes maximum", price_per_day: 60, user_id: User.first.id, photos:"", status:"disponible", location:"Lille")
 van3 = Van.create!(title:"Van3", description:"Van3 description - magnifique pour partir en vacances et profiter en famille, en amis, en couple... pour 4 personnes maximum", price_per_day: 70, user_id: User.last.id, photos:"", status:'réservé', location:"Bordeaux")
 van4 = Van.create!(title:"Van4", description:"Van4 description - magnifique pour partir en vacances et profiter en famille, en amis, en couple... pour 4 personnes maximum", price_per_day: 80, user_id: User.last.id, photos:"", status:'réservé', location:"Lyon")
