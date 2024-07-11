@@ -12,7 +12,7 @@
 }
 
 .hero-content {
-  max-width: 700px;
+  max-width: 1000px;
   padding: 50px 20px;
 }
 
@@ -22,8 +22,10 @@
 }
 
 .hero-content h2 {
+  max-width: 1000px;
   font-size: 4em;
   margin-bottom: 20px;
+  font-family: $h2-font-homepage;
 }
 
 .hero-content .btn {

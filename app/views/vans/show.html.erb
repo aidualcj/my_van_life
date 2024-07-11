@@ -10,7 +10,7 @@
         <%= image_tag 'roadpass-zRetWvOnbf0-unsplash.jpg', alt: @van.title %>
       </div>
       <div class="van-title">
-        <h1><%= @van.title %></h1>
+        <h1 class="van-title-font"><%= @van.title %></h1>
       </div>
     </div>
     <% if user_signed_in? && @van.user == current_user %>
@@ -23,16 +23,16 @@
       <p><%= @van.description %></p>
     </div>
     <div class="van-price">
-      <p>Prix: <%= @van.price_per_day %> EUR/jour</p>
+      <p><%= @van.price_per_day %> €/jour</p>
     </div>
     <div class="van-reserve">
       <%= link_to 'Réserver ce Van', new_van_booking_path(@van), class: 'btn-reserve' %>
     </div>
     <div class="van-user">
-      <p>Ce van est proposé par : <%= @van.user.name %></p>
+      <p><em>Ce van est proposé par : <%= @van.user.name %></em></p>
     </div>
     <div class="van-reviews">
-      <h2>Reviews</h2>
+      <h2>Avis</h2>
       <% @van.reviews.each do |review| %>
         <div class="review">
           <div class="review-stars">

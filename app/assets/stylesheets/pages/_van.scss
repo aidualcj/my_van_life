@@ -1,5 +1,7 @@
+@import "config/fonts";
+
 .page-container {
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 20px;
   position: relative;
@@ -44,6 +46,8 @@
   margin-top: 20px;
   font-size: 2em;
   font-weight: bold;
+  text-align: left;
+  font-family: $h1-van-title-font;
 }
 
 .van-actions {
