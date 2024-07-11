@@ -14,7 +14,7 @@
         <div class="small-van-card">
           <p>Du <%= booking.start_date %> au <%= booking.end_date %></p>
           <% if booking.status == "terminée" %>
-              <%= link_to "Ajouter un commentaire",  new_van_booking_review_path(booking, booking.van), class: "btn btn-primary" %>
+              <%= link_to "Ajouter un commentaire",  new_booking_review_path(booking, booking.van), class: "btn btn-primary" %>
           <% end %>
           <% if booking.van.photos.attached? %>
             <%= cl_image_tag booking.van.photos.key, class: "img-fluid"%>
