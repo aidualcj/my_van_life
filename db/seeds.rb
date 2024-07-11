@@ -29,15 +29,34 @@ puts "Users Terminée"
 # Créer les vans
 puts "Creation vans..."
 
-file = URI.open("link")
-van1 = Van.create!(title:"Van1", description:"Van1 description - magnifique pour partir en vacances et profiter en famille, en amis, en couple... pour 4 personnes maximum", price_per_day: 50, user_id: User.first.id, status:"disponible", location:"Paris")
-van1.photo.attach(io: file, filename: "van1.png", content_type: "image/png")
+file_path = Rails.root.join('app/assets/images/van1.jpg')
+file = File.open(file_path)
+van1 = Van.create!(title: "Van1", description: "Van1 description - magnifique pour partir en vacances et profiter en famille, en amis, en couple... pour 4 personnes maximum", price_per_day: 50, user_id: User.first.id, status: "disponible", location: "Paris")
+van1.photos.attach(io: file, filename: "van1.jpg", content_type: "image/jpeg")
 van1.save
-puts van1.name
+file.close
 
-van2 = Van.create!(title:"Van2", description:"Van2 description - magnifique pour partir en vacances et profiter en famille, en amis, en couple... pour 4 personnes maximum", price_per_day: 60, user_id: User.first.id, photos:"", status:"disponible", location:"Lille")
-van3 = Van.create!(title:"Van3", description:"Van3 description - magnifique pour partir en vacances et profiter en famille, en amis, en couple... pour 4 personnes maximum", price_per_day: 70, user_id: User.last.id, photos:"", status:'réservé', location:"Bordeaux")
-van4 = Van.create!(title:"Van4", description:"Van4 description - magnifique pour partir en vacances et profiter en famille, en amis, en couple... pour 4 personnes maximum", price_per_day: 80, user_id: User.last.id, photos:"", status:'réservé', location:"Lyon")
+file_path2 = Rails.root.join('app/assets/images/van2.jpg')
+file2 = File.open(file_path2)
+van2 = Van.create!(title:"Van2", description:"Van2 description - magnifique pour partir en vacances et profiter en famille, en amis, en couple... pour 4 personnes maximum", price_per_day: 60, user_id: User.first.id, status:"disponible", location:"Lille")
+van2.photos.attach(io: file2, filename: "van2.jpg", content_type: "image/jpeg")
+van2.save
+file2.close
+
+file_path3 = Rails.root.join('app/assets/images/van3.jpg')
+file3 = File.open(file_path3)
+van3 = Van.create!(title:"Van3", description:"Van3 description - magnifique pour partir en vacances et profiter en famille, en amis, en couple... pour 4 personnes maximum", price_per_day: 70, user_id: User.last.id, status:'réservé', location:"Bordeaux")
+van3.photos.attach(io: file3, filename: "van3.jpg", content_type: "image/jpeg")
+van3.save
+file3.close
+
+file_path4 = Rails.root.join('app/assets/images/van4.jpg')
+file4 = File.open(file_path4)
+van4 = Van.create!(title:"Van4", description:"Van4 description - magnifique pour partir en vacances et profiter en famille, en amis, en couple... pour 4 personnes maximum", price_per_day: 80, user_id: User.last.id, status:'réservé', location:"Lyon")
+van4.photos.attach(io: file4, filename: "van4.jpg", content_type: "image/jpeg")
+van4.save
+file4.close
+
 puts "Vans Terminée"
 
 # Créer les reviews
