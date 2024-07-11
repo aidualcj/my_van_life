@@ -1,9 +1,21 @@
 class VansController < ApplicationController
   before_action :set_van, only: [:show, :edit, :update, :destroy]
+  before_action :set_booking, only: [:index]
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
     @vans = Van.all
+    if params[:query].present?
+      @vans = @vans.where("location ILIKE ?", "%#{params[:query]}%")
+    end
+    if params[:dates].present?
+      dates = params[:dates].split(" ")
+      start_date_calendar = dates[0].to_date
+      end_date_calendar = dates.last.to_date
+      start_date = @booking.start_date.to_date
+      end_date = @booking.end_date.to_date
+      @bookings = Booking.where("start_date >=? AND start_date <=? OR end_date >=? AND end_date <=?", start_date.to_date, start_date, end_date.to_date, end_date)
+    end
     @markers = @vans.geocoded.map do |van|
       {
         lat: van.latitude,
@@ -69,5 +81,9 @@ class VansController < ApplicationController
 
   def van_reservations
     Booking.joins(:van).where(vans: { user_id: self.id }).distinct
+  end
+
+  def set_booking
+    @booking = Booking.find(params[:booking_id])
   end
  end
