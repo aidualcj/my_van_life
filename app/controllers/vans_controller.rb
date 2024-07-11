@@ -48,7 +48,27 @@ class VansController < ApplicationController
   end
 
   def reservations
-    @reservations = current_user.van_reservations
+    @reservations = van_reservations
+  end
+
+  def van_reservations
+    Booking.joins(:van).where(vans: { user_id: current_user.id }).distinct
+  end
+
+  def accept
+    @reservation = van_reservations.find(params[:booking_id])
+    @booking = Booking.find(params[:booking_id])
+    @booking.update(status: "accepté")
+    @reservation.update(status:"refusé")
+    redirect_to my_van_reservations_path, notice: 'Réservation acceptée.'
+  end
+
+  def reject
+    @reservation = van_reservations.find(params[:booking_id])
+    @booking = Booking.find(params[:booking_id])
+    @booking.update(status: "refusé")
+    @reservation.update(status:"refusé")
+    redirect_to my_van_reservations_path, notice: 'Réservation refusée.'
   end
 
   private
@@ -61,7 +81,7 @@ class VansController < ApplicationController
     params.require(:van).permit(:title, :description, :price_per_day, :location, :photos)
   end
 
-  def van_reservations
-    Booking.joins(:van).where(vans: { user_id: self.id }).distinct
+  def set_booking
+    @booking = Booking.find(params[:id])
   end
 end

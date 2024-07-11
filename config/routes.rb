@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :bookings, only: [:index, :show] do
     resources :reviews, only: [:new, :create]
     resources :checkings, only: [:new, :create]
+    patch 'cancel'
   end
 
   resources :vans do
@@ -16,9 +17,12 @@ Rails.application.routes.draw do
   get 'bookings/:id/messages/new', to: 'messages#new', as: :new_message
   get 'bookings/:id/messages', to: 'messages#show', as: :show_messages
 
-  # Route pour les vans du current_user
+  # Route pour les vans, bookings et reservations du current_user
   get 'my_vans', to: 'vans#my_vans', as: :my_vans
   get 'my_bookings', to: 'bookings#my_bookings', as: :my_bookings
   get 'my_van_reservations', to: 'vans#reservations', as: :my_van_reservations
 
+  # Routes pour accepter et refuser les réservations
+  patch 'my_van_reservations/:booking_id/accept', to: 'vans#accept', as: :accept_my_van_reservation
+  patch 'my_van_reservations/:booking_id/reject', to: 'vans#reject', as: :reject_my_van_reservation
 end
