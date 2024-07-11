@@ -11,9 +11,10 @@ class VansController < ApplicationController
       dates = params[:dates].split(" ")
       start_date_calendar = dates[0].to_date
       end_date_calendar = dates.last.to_date
-      start_date = @booking.start_date.to_date
-      end_date = @booking.end_date.to_date
-      @bookings = Booking.where("start_date >=? AND start_date <=? OR end_date >=? AND end_date <=?", start_date.to_date, start_date, end_date.to_date, end_date)
+
+      overlapping_bookings = Booking.where("start_date <= ? AND end_date >= ?", end_date_calendar, start_date_calendar)
+      booked_van_ids = overlapping_bookings.pluck(:van_id)
+      @vans = @vans.where.not(id: booked_van_ids)
     end
     @markers = @vans.geocoded.map do |van|
       {
