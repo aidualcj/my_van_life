@@ -1,6 +1,5 @@
 class VansController < ApplicationController
   before_action :set_van, only: [:show, :edit, :update, :destroy]
-  before_action :set_booking, only: [:index]
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
@@ -81,9 +80,5 @@ class VansController < ApplicationController
 
   def van_reservations
     Booking.joins(:van).where(vans: { user_id: self.id }).distinct
-  end
-
-  def set_booking
-    @booking = Booking.find(params[:booking_id])
   end
  end
