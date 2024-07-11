@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_10_132705) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_11_220133) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -74,7 +74,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_10_132705) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "booking_id"
+    t.bigint "sender_id"
+    t.bigint "receiver_id"
+    t.bigint "user_id", null: false
     t.index ["booking_id"], name: "index_messages_on_booking_id"
+    t.index ["receiver_id"], name: "index_messages_on_receiver_id"
+    t.index ["sender_id"], name: "index_messages_on_sender_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
     t.index ["van_id"], name: "index_messages_on_van_id"
   end
 
@@ -115,6 +121,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_10_132705) do
     t.string "photos"
     t.float "latitude"
     t.float "longitude"
+    t.date "rented_from"
+    t.date "rented_to"
     t.index ["user_id"], name: "index_vans_on_user_id"
   end
 
@@ -124,6 +132,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_10_132705) do
   add_foreign_key "bookings", "vans"
   add_foreign_key "checkings", "bookings"
   add_foreign_key "messages", "bookings"
+  add_foreign_key "messages", "users"
+  add_foreign_key "messages", "users", column: "receiver_id"
+  add_foreign_key "messages", "users", column: "sender_id"
   add_foreign_key "messages", "vans"
   add_foreign_key "reviews", "vans"
   add_foreign_key "vans", "users"
