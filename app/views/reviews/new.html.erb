@@ -1,15 +1,19 @@
-<h1>Ajouter un Avis</h1>
-<%= form_with model: [@booking, @review], local: true do |form| %>
-  <div>
-    <%= form.label :rating %>
-    <%= form.number_field :rating, in: 1..5 %>
-  </div>
-  <div>
-    <%= form.label :comment %>
-    <%= form.text_area :comment %>
-  </div>
-  <div>
-    <%= form.submit 'Soumettre' %>
-  </div>
-<% end %>
-<%= link_to 'Retour', van_path(@booking.van) %>
+<div class="van-back">
+   <%= link_to my_bookings_path, class: 'back-link m-3' do %>
+    <span class="back-arrow">&larr;</span> Retour à tes réservations
+  <% end %>
+</div>
+<div class="container">
+  <h1 class="text-center">Ajouter un Avis</h1>
+    <%= simple_form_for [@booking, @review], html: { local: true } do |f| %>
+    <div>
+      <%= f.input :rating, collection: 1..5, label: "Rating" %>
+    </div>
+    <div>
+      <%= f.input :comment, as: :text, label: "Comment" %>
+    </div>
+    <div>
+      <%= f.button :submit, 'Valider', class: 'btn btn-primary' %>
+    </div>
+    <% end %>
+</div>
