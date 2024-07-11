@@ -4,6 +4,12 @@ class VansController < ApplicationController
 
   def index
     @vans = Van.all
+    @markers = @vans.geocoded.map do |van|
+      {
+        lat: van.latitude,
+        lng: van.longitude
+      }
+    end
   end
 
   def show
@@ -64,4 +70,4 @@ class VansController < ApplicationController
   def van_reservations
     Booking.joins(:van).where(vans: { user_id: self.id }).distinct
   end
-end
+ end
