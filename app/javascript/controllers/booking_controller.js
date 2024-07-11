@@ -2,15 +2,15 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="booking"
 export default class extends Controller {
+  static targets = ["startDate", "endDate", "totalPrice"]
   connect() {
+    console.log("Booking controller connected");
   }
   calculateTotalPrice() {
 
     const startDate = this.startDateTarget.value;
-    console.log(startDate);
     const endDate = this.endDateTarget.value;
     const pricePerDay = parseFloat(this.data.get("pricePerDay"));
-
 
     if (startDate && endDate) {
       const start = new Date(startDate);
@@ -20,9 +20,9 @@ export default class extends Controller {
 
       if (daysDiff > 0) {
         const totalPrice = daysDiff * pricePerDay;
-        this.totalPriceTarget.innerText = `Prix Total: €${totalPrice.toFixed(2)}`;
+        this.totalPriceTarget.innerText = `Prix Total: ${totalPrice.toFixed(2)}€`;
       } else {
-        this.totalPriceTarget.innerText = 'Prix Total: €0';
+        this.totalPriceTarget.innerText = 'Prix Total: 0€';
       }
     }
   }
