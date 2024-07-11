@@ -12,6 +12,7 @@
             <li><strong>Téléphone:</strong> <%= @booking.user.phone_number %></li>
             <li><strong>Email:</strong> <%= @booking.user.email %></li>
             <li><strong>Adresse:</strong> <%= @booking.user.address %></li>
+            <li><strong>Prix: </strong><%= @booking.price.to_i %>€</li>
           </ul>
         </div>
         <div class="card-footer">
