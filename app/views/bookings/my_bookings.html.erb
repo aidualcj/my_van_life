@@ -12,24 +12,24 @@
   <% if @bookings.any? %>
     <div class="reservation-list">
       <% @bookings.each do |booking| %>
-        <div class="user-reservation-card">
-          <% if booking.van.photos.attached? %>
-            <%= cl_image_tag booking.van.photos.key, class: "img-fluid" %>
-          <% else %>
-            <%= image_tag 'roadpass-zRetWvOnbf0-unsplash.jpg', class: "img-fluid" %>
-          <% end %>
-          <div class="reservation-details">
-            <p class="booking-date">Du <%= booking.start_date %> au <%= booking.end_date %></p>
-            <h3><%= booking.van.title %> - <%= booking.status.capitalize %></h3>
-
-            <% if booking.status == "attente" %>
-              <%= link_to 'Annuler', booking_cancel_path(booking), data: { turbo_method: :patch }, class: 'btn-delete' %>
+        <div class="reservation-item">
+          <div class="reservation-card">
+            <% if booking.van.photos.attached? %>
+              <%= cl_image_tag booking.van.photos.key, class: "img-fluid" %>
+            <% else %>
+              <%= image_tag 'roadpass-zRetWvOnbf0-unsplash.jpg', class: "img-fluid" %>
             <% end %>
-
-            <p><%= booking.van.description %></p>
-            <p class="price"><%= number_to_currency(booking.price, unit: '€', precision: 0) %>/jour</p>
-            <p>Ce van est loué par : <%= booking.van.user.name %></p>
-            <%= link_to "Voir ma réservation", booking_path(booking), class: "btn btn-primary" %>
+            <div class="reservation-details">
+              <p class="booking-date">Du <%= booking.start_date %> au <%= booking.end_date %></p>
+              <h3><%= booking.van.title %> - <%= booking.status.capitalize %></h3>
+              <% if booking.status == "attente" %>
+                <%= link_to 'Annuler', booking_cancel_path(booking), data: { turbo_method: :patch }, class: 'btn-delete' %>
+              <% end %>
+              <p><%= booking.van.description %></p>
+              <p class="price"><%= number_to_currency(booking.price, unit: '€', precision: 0) %>/jour</p>
+              <p>Ce van est loué par : <%= booking.van.user.name %></p>
+              <%= link_to "Voir ma réservation", booking_path(booking), class: "btn-view-reservation" %>
+            </div>
           </div>
         </div>
       <% end %>
