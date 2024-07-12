@@ -91,9 +91,10 @@
 }
 
 // Style pour la carte "Informations sur la réservation"
-.booking-info-card {
+.booking-info-card-new {
   position: sticky; // Éléments collants
   top: 20px; // Distance du haut
+  z-index: 10;
 }
 
 .card-header {

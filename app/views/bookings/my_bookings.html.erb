@@ -1,42 +1,40 @@
-<div class="container">
+<div class="reservation-container">
   <div class="van-back m-3">
-      <%= link_to vans_path, class: 'back-link' do %>
-        <span class="back-arrow">&larr;</span> Retour à la liste des Vans
-      <% end %>
-    </div>
-  <div class="vans-title">
+    <%= link_to vans_path, class: 'back-link' do %>
+      <span class="back-arrow">&larr;</span> Retour à la liste des Vans
+    <% end %>
+  </div>
+
+  <div class="reservation-title">
     <h1>Mes réservations</h1>
   </div>
 
   <% if @bookings.any? %>
-    <div class="vans-list">
+    <div class="reservation-list">
       <% @bookings.each do |booking| %>
-        <div class="small-van-card">
-          <p>Du <%= booking.start_date %> au <%= booking.end_date %></p>
-          <% if booking.status == "terminée" %>
-              <%= link_to "Ajouter un commentaire",  new_booking_review_path(booking, booking.van), class: "btn btn-primary" %>
-          <% end %>
+        <div class="user-reservation-card">
           <% if booking.van.photos.attached? %>
-            <%= cl_image_tag booking.van.photos.key, class: "img-fluid"%>
+            <%= cl_image_tag booking.van.photos.key, class: "img-fluid" %>
           <% else %>
             <%= image_tag 'roadpass-zRetWvOnbf0-unsplash.jpg', class: "img-fluid" %>
           <% end %>
-          <div class="van-details">
+          <div class="reservation-details">
+            <p>Du <%= booking.start_date %> au <%= booking.end_date %></p>
             <h3><%= booking.van.title %> - <%= booking.status.capitalize %></h3>
-            <% if booking.status == "attente" %>
-              <%= link_to 'Annuler', van_path(booking.van), method: :delete, data: { confirm: 'Êtes-vous sûr?' }, class: 'btn-delete' %>
-            <% end %>
             <p><%= booking.van.description %></p>
             <p class="price"><%= number_to_currency(booking.price, unit: '€', precision: 0) %>/jour</p>
             <p>Ce van est loué par : <%= booking.van.user.name %></p>
             <%= link_to "Voir mon van", van_path(booking.van), class: "btn btn-primary" %>
           </div>
+          <% if booking.status == "attente" %>
+            <%= link_to '<i class="fas fa-times delete-button"></i>'.html_safe, van_path(booking.van), method: :delete, data: { confirm: 'Êtes-vous sûr?' }, class: 'delete-button' %>
+          <% end %>
         </div>
       <% end %>
     </div>
   <% else %>
-    <h4 class="text-center">Vous n'avez pas fait de réservation...</h3>
-    <h4 class="text-center">Prêt à organiser un roadtrip ?</h3>
+    <h4 class="text-center">Vous n'avez pas fait de réservation...</h4>
+    <h4 class="text-center">Prêt à organiser un roadtrip ?</h4>
     <%= link_to "Louer un van", new_van_path, class: "btn btn-primary" %>
   <% end %>
 </div>
