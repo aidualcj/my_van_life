@@ -5,43 +5,48 @@
   <div class="col-sm-8 my-3">
     <%= form_with url: vans_path, method: :get, class: "d-flex" do %>
       <%= text_field_tag :query,
-            params[:query],
-            class: "form-control",
-            placeholder: "Lieu de ton van"
-        %>
-        <%= text_field_tag :dates,
-        params[:dates],
-            class: "form-control",
-            placeholder: "Dates de location",
-            data: { controller: "range-picker"  }%>
-      <%= submit_tag "Rechercher", name: "", class: "btn-search" %>
-    <% end %>
+           params[:query],
+           class: "form-control",
+           placeholder: "Lieu de ton van"
+      %>
+      <%= text_field_tag :dates,
+      params[:dates],
+        class: "form-control",
+        placeholder: "Dates de location",
+        data: { controller: "range-picker"  }%>
+    <%= submit_tag "Search", name: "", class: "btn-search" %>
+  <% end %>
   </div>
 </div>
-<div class="all d-flex">
-  <div class="vans-list">
-    <% @vans.each do |van| %>
-      <div class="small-van-card">
-        <% if van.photos.attached? %>
-          <%= cl_image_tag van.photos.key, class: "img-fluid"%>
-        <% else %>
-          <%= image_tag 'roadpass-zRetWvOnbf0-unsplash.jpg', class: "img-fluid" %>
-          <% end %>
-        <div class="van-details">
-          <h3><%= van.title %></h3>
-          <p><%= van.description %></p>
-          <p class="price"><%= number_to_currency(van.price_per_day, unit: '€', precision: 0) %>/jour</p>
-          <p>Ce van est proposé par : <%= van.user.name %></p>
-          <%= link_to "En savoir plus", van_path(van), class: "btn btn-primary" %>
-      </div>
-      </div>
-    <% end %>
+<% if @vans.empty? %>
+  <div class="vans-title">
+    <h1>Aucun van ne correspond à ta recherche</h1>
   </div>
-  <div class="map-container mt-4 custom-map-container">
-    <div style="width: 100%; height: 100vh;"
+<% else %>
+  <div class="all d-flex">
+    <div class="vans-list">
+      <% @vans.each do |van| %>
+        <div class="small-van-card">
+          <% if van.photos.attached? %>
+            <%= cl_image_tag van.photos.key, class: "img-fluid"%>
+          <% else %>
+            <%= image_tag 'roadpass-zRetWvOnbf0-unsplash.jpg', class: "img-fluid" %>
+            <% end %>
+          <div class="van-details">
+            <h3><%= van.title %></h3>
+            <p><%= van.description %></p>
+            <p class="price"><%= number_to_currency(van.price_per_day, unit: '€', precision: 0) %>/jour</p>
+            <p>Ce van est proposé par : <%= van.user.name %></p>
+            <%= link_to "En savoir plus", van_path(van), class: "btn btn-primary" %>
+        </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="map-container mt-4 custom-map-container">
+      <div style="width: 100%; height: 100vh;"
        data-controller="map"
        data-map-markers-value="<%= @markers.to_json %>"
        data-map-apikey-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+      </div>
     </div>
   </div>
-</div>

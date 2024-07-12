@@ -18,9 +18,9 @@
       </div>
     </div>
     <% if user_signed_in? && @van.user == current_user %>
-      <div class="van-actions">
-        <%= link_to 'Éditer ce Van', edit_van_path(@van), class: 'btn-edit' %>
-        <%= button_to 'Supprimer ce Van', delete_my_van_path(@van), method: :delete, data: { turbo_method: :delete, turbo_confirm: 'Êtes-vous sûr?' }, class: 'btn-delete' %>
+      <div class="van-actions d-flex justify-content-end">
+        <%= link_to 'Éditer', edit_van_path(@van), class: 'btn-edit' %>
+        <%= button_to 'Supprimer', delete_my_van_path(@van), method: :delete, data: { turbo_method: :delete, turbo_confirm: 'Êtes-vous sûr?' }, class: 'btn-delete' %>
       </div>
     <% end %>
     <div class="van-description">
