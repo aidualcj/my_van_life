@@ -2,7 +2,7 @@ class Booking < ApplicationRecord
   STATUS = %w(attente acceptée terminée refusée annulée)
   belongs_to :van
   belongs_to :user
-  has_one :checking
+  has_one :checking, dependent: :destroy
   has_many :messages
 
   validates :user_id, presence: true

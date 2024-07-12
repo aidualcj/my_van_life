@@ -74,18 +74,17 @@ class VansController < ApplicationController
   end
 
   def accept
-    @reservation = van_reservations.find(params[:booking_id])
     @booking = Booking.find(params[:booking_id])
-    @booking.update(status: "accepté")
-    @reservation.update(status:"refusé")
+    @booking.status = "accepté"
+    raise
+    @booking.save!
     redirect_to my_van_reservations_path, notice: 'Réservation acceptée.'
   end
 
   def reject
-    @reservation = van_reservations.find(params[:booking_id])
     @booking = Booking.find(params[:booking_id])
-    @booking.update(status: "refusé")
-    @reservation.update(status:"refusé")
+    @booking.status = "refusé"
+    @booking.save!
     redirect_to my_van_reservations_path, notice: 'Réservation refusée.'
   end
 
