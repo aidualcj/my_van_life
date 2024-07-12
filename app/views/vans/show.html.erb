@@ -20,7 +20,7 @@
     <% if user_signed_in? && @van.user == current_user %>
       <div class="van-actions">
         <%= link_to 'Éditer ce Van', edit_van_path(@van), class: 'btn-edit' %>
-        <%= link_to 'Supprimer ce Van', my_vans_path, data: { confirm: 'Êtes-vous sûr?', turbo_method: :delete }, class: 'btn-delete' %>
+        <%= button_to 'Supprimer ce Van', delete_my_van_path(@van), method: :delete, data: { turbo_method: :delete, turbo_confirm: 'Êtes-vous sûr?' }, class: 'btn-delete' %>
       </div>
     <% end %>
     <div class="van-description">
