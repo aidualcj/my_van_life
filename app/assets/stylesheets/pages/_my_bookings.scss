@@ -1,13 +1,13 @@
 .reservation-container {
-  max-width: 1200px; // Largeur maximale du conteneur
+  max-width: 1400px; // Augmentez la largeur maximale du conteneur
   margin: 0 auto; // Centre le conteneur
   padding: 20px; // Espace autour
-  align-self: center;
 }
 
 .reservation-list {
   display: flex;
   flex-direction: column; // Aligne les cartes les unes sous les autres
+  align-items: center; // Centre horizontalement les cartes
 }
 
 .user-reservation-card {
@@ -17,31 +17,36 @@
   border-radius: 8px; // Coins arrondis
   padding: 15px; // Espace à l'intérieur de la carte
   margin-bottom: 15px; // Espace entre les cartes
-  width: 100%; // Prend toute la largeur du conteneur
+  width: 100%; // Prend 90% de la largeur du conteneur, ajustez si nécessaire
   max-width: 1000px; // Largeur maximale pour chaque carte
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // Ombre légère pour profondeur
 }
 
 .user-reservation-card img {
-  max-width: 150px; // Taille maximum de l'image
+  max-width: 300px; // Taille maximum de l'image
   margin-right: 15px; // Espace entre l'image et le texte
 }
 
 .reservation-details {
   flex: 1; // Permet à la section des détails de prendre tout l'espace disponible
   display: flex; // Aligne les éléments à l'intérieur
-  justify-content: space-between; // Espace entre les éléments
-  align-items: center; // Centre verticalement
+  flex-direction: column; // Aligne les éléments verticalement
+  justify-content: flex-start; // Espace entre les éléments
+  align-items: flex-start; // Centre verticalement
 }
 
-.btn-delete {
-  background: none; // Enlève le fond par défaut
-  border: none; // Enlève la bordure
-  color: red; // Couleur rouge pour le bouton
-  font-size: 16px; // Taille du bouton
-  cursor: pointer; // Change le curseur
-  text-align: right; // Aligne le texte à droite
+.booking-date {
+  background-color: rgb(42, 42, 104); // Couleur de fond bleu
+  color: white; // Couleur du texte blanche
+  padding: 10px; // Espacement autour du texte
+  border-radius: 8px; // Coins arrondis
+  font-weight: bold; // Écriture en gras (optionnel)
 }
 
-.text-center {
+.custom-title {
+  font-family: "Rozha One", "Helvetica", "sans-serif"; // Police personnalisée
+  font-size: 3rem; // Taille du texte, ajustez selon vos besoins
   text-align: center; // Centre le texte
+  color: #000000; // Couleur du texte, ajustez si nécessaire
+  margin-bottom: 20px; // Espace sous le titre
 }

@@ -6,7 +6,7 @@
   </div>
 
   <div class="reservation-title">
-    <h1>Mes réservations</h1>
+    <h1 class="custom-title">Mes réservations</h1>
   </div>
 
   <% if @bookings.any? %>
@@ -19,7 +19,7 @@
             <%= image_tag 'roadpass-zRetWvOnbf0-unsplash.jpg', class: "img-fluid" %>
           <% end %>
           <div class="reservation-details">
-            <p>Du <%= booking.start_date %> au <%= booking.end_date %></p>
+            <p class="booking-date">Du <%= booking.start_date %> au <%= booking.end_date %></p>
             <h3><%= booking.van.title %> - <%= booking.status.capitalize %></h3>
 
             <% if booking.status == "attente" %>
