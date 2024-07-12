@@ -21,17 +21,16 @@
           <div class="reservation-details">
             <p>Du <%= booking.start_date %> au <%= booking.end_date %></p>
             <h3><%= booking.van.title %> - <%= booking.status.capitalize %></h3>
+
             <% if booking.status == "attente" %>
-              <%= link_to 'Annuler', booking_cancel_path(booking), data: { turbo_method: :patch}, class: 'btn-delete' %>
+              <%= link_to 'Annuler', booking_cancel_path(booking), data: { turbo_method: :patch }, class: 'btn-delete' %>
             <% end %>
+
             <p><%= booking.van.description %></p>
             <p class="price"><%= number_to_currency(booking.price, unit: '€', precision: 0) %>/jour</p>
             <p>Ce van est loué par : <%= booking.van.user.name %></p>
             <%= link_to "Voir mon van", van_path(booking.van), class: "btn btn-primary" %>
           </div>
-          <% if booking.status == "attente" %>
-            <%= link_to '<i class="fas fa-times delete-button"></i>'.html_safe, van_path(booking.van), method: :delete, data: { confirm: 'Êtes-vous sûr?' }, class: 'delete-button' %>
-          <% end %>
         </div>
       <% end %>
     </div>

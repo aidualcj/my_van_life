@@ -1,5 +1,3 @@
-// reservations.scss
-
 .reservation-container {
   max-width: 1200px; // Largeur maximale du conteneur
   margin: 0 auto; // Centre le conteneur
@@ -30,16 +28,18 @@
 
 .reservation-details {
   flex: 1; // Permet à la section des détails de prendre tout l'espace disponible
+  display: flex; // Aligne les éléments à l'intérieur
+  justify-content: space-between; // Espace entre les éléments
+  align-items: center; // Centre verticalement
 }
 
-.delete-button {
-  position: relative; // Positionnement relatif pour pouvoir utiliser absolu
-  float: right; // Aligne le bouton à droite
+.btn-delete {
   background: none; // Enlève le fond par défaut
   border: none; // Enlève la bordure
   color: red; // Couleur rouge pour le bouton
-  font-size: 24px; // Taille du bouton
+  font-size: 16px; // Taille du bouton
   cursor: pointer; // Change le curseur
+  text-align: right; // Aligne le texte à droite
 }
 
 .text-center {
