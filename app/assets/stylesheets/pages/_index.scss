@@ -127,6 +127,12 @@
   border-radius: 5px;
 }
 
+.btn-search {
+  margin-left: 10px; // Ajoute un espace entre le champ de texte et le bouton
+}
+
+
+
 .btn:hover,
 .btn:focus {
   background-color: #203e5f;
@@ -146,4 +152,8 @@
     width: calc(100% - 20px);
     max-width: none;
   }
+}
+
+.custom-map-container {
+  margin: 20px; /* Ajustez cette valeur selon vos besoins */
 }
