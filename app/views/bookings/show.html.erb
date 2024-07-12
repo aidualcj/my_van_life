@@ -28,7 +28,7 @@
           </ul>
         </div>
         <div class="card-footer">
-          <% if @booking.status == "annulée" %>
+          <% if @booking.status == "annulée" || @booking.status == "terminée" || @booking.status == "refusée"%>
             <%= link_to 'Mes réservations', my_bookings_path(@booking) %>
           <% else %>
             <%= link_to 'Annuler la réservation', booking_cancel_path(@booking), data: { turbo_method: :patch}, class: 'btn-delete' %>
@@ -52,7 +52,10 @@
             <p class="card-text"><%= @booking.van.description %></p>
             <p class="card-text price mb-0 van-price"><%= number_to_currency(@booking.van.price_per_day, unit: '€', precision: 0) %>/jour</p>
             <div class="van-reviews">
-              <h2>Avis</h2>
+              <div class="d-flex justify-content-between">
+                <h2>Avis</h2>
+                <%= link_to "Ajouter un avis", new_booking_review_path(@booking), class: 'avis-button' %>
+              </div>
               <% if @booking.van.reviews.any? %>
                 <% @booking.van.reviews.each do |review| %>
                   <div class="review">
