@@ -9,8 +9,12 @@ export default class extends Controller {
   calculateTotalPrice() {
 
     const startDate = this.startDateTarget.value;
+    console.log(startDate);
     const endDate = this.endDateTarget.value;
+    console.log(endDate);
     const pricePerDay = parseFloat(this.data.get("pricePerDay"));
+    console.log(this.data.get("pricePerDay"));
+    console.log(pricePerDay);
 
     if (startDate && endDate) {
       const start = new Date(startDate);

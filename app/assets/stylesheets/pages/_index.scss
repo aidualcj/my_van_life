@@ -43,6 +43,7 @@
 
 /* LISTE DES VANS */
 
+
 .text-center {
   text-align: center;
   margin-bottom: 20px;
@@ -50,10 +51,12 @@
 
 /* TITRE LISTE DES VANS */
 
-.vans-title {
+.vans-title h1{
   text-align: center;
   margin-top: 50px;
   margin-bottom: 20px;
+  font-family: "Rozha One", "Helvetica", "sans-serif";
+  font-size: 3rem;
 }
 
 .vans-list {
@@ -69,27 +72,29 @@
   margin: 10px 5px;
   padding: 15px;
   border: 1px solid #ccc;
-  border-radius: 12px;
+  border-radius: 0; /* Enlève le border-radius */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   background-color: #fff;
   flex: 1 1 32%;
   max-width: 450px;
   text-align: center;
   position: relative;
+
+  /* Allonger la carte pour afficher la description */
+  height: 700px; /* Ajustez cette valeur selon vos besoins */
 }
 
 .small-van-card img {
   width: 100%;
-  height: 200px;
+  height: 200px; /* Hauteur de l'image */
   object-fit: cover;
-  border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
+  /* Enlève le border-radius */
 }
 
 .van-details {
   padding: 15px;
-  height: 300px;
-  overflow: hidden;
+  height: auto; /* Permet à la hauteur de s'ajuster à la description */
+  overflow: visible; /* Assure que la description est entièrement visible */
 }
 
 .van-details h3 {
@@ -116,7 +121,7 @@
   left: 50%;
   transform: translateX(-50%);
   padding: 10px 20px;
-  background-color: #007bff;
+  background-color: #6c8095;
   color: #fff;
   text-decoration: none;
   border-radius: 5px;
@@ -124,7 +129,7 @@
 
 .btn:hover,
 .btn:focus {
-  background-color: #0056b3;
+  background-color: #203e5f;
   color: #fff;
   text-decoration: none;
 }
