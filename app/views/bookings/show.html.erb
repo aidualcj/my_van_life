@@ -12,7 +12,7 @@
   </div>
 
   <div class="row mt-4">
-    <div class="col-md-8 offset-md-2">
+    <div class="col-md-8">
       <div class="card custom-booking-info-card">
         <div class="card-header">
           <h3>Reservation <%=@booking.status == "annulée"? "annulée" : "validée"%></h3>
@@ -39,7 +39,7 @@
   </div>
 
   <div class="row mt-4">
-    <div class="col-md-8 offset-md-2">
+    <div class="col-md-8">
       <div class="van-card card bg-light">
         <div class="card-body">
           <% if @booking.van.photos.attached? %>
