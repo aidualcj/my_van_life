@@ -3,7 +3,7 @@
     <div class="col-md-8">
       <div class="card">
         <div class="card-header">
-          <h3>Reservation validée</h3>
+          <h3>Reservation <%=@booking.status == "annulée"? "annulée" : "validée"%></h3>
         </div>
         <div class="card-body">
           <h5>Vos informations</h5>
