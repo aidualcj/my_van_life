@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
   # Route pour les vans, bookings et reservations du current_user
   get 'my_vans', to: 'vans#my_vans', as: :my_vans
+  delete 'my_vans/:id', to: 'vans#destroy', as: :delete_my_van
   get 'my_bookings', to: 'bookings#my_bookings', as: :my_bookings
   get 'my_van_reservations', to: 'vans#reservations', as: :my_van_reservations
 
