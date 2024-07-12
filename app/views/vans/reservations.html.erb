@@ -13,8 +13,8 @@
           <strong>Prix :</strong> <%= number_to_currency(reservation.price, unit: '€') %>
           <div class="d-flex">
             <% if reservation.status == "attente" %>
-              <%= link_to "Accepter", accept_my_van_reservation_path(reservation), data: {turbo_method: :patch}, class: "btn btn-primary" %> <br>
-              <%= link_to "Refuser", reject_my_van_reservation_path(reservation), data: {turbo_method: :patch}, class: "btn btn-danger" %>
+              <%= link_to "Accepter", accept_my_van_reservation_path(reservation), data: {turbo_method: :patch }, class: "btn btn-primary" %> <br>
+              <%= link_to "Refuser", reject_my_van_reservation_path(reservation), data: {turbo_method: :patch }, class: "btn btn-danger" %>
             <% end %>
           </div>
         </div>
