@@ -1,19 +1,26 @@
-<div class="container">
-  <h1>Réservations de mes Vans</h1>
+<div class="container m-3">
+  <h1 class = "text-center">Réservations de mes Vans</h1>
 
   <% if @reservations.any? %>
-    <ul>
+    <div class="d-flex">
       <% @reservations.each do |reservation| %>
-        <li>
-          <strong>Van :</strong> <%= link_to reservation.van.title, van_path(reservation.van) %><br>
+      <div class="card m-3 bg-white">
+        <div class="card-body">
+          <p><strong>Du <%= reservation.start_date %> au <%= reservation.end_date %></strong></p>
+          <strong><%= reservation.van.title %> </strong><%= link_to "(Détail de mon van)", van_path(reservation.van) %> <br>
           <strong>Client :</strong> <%= reservation.user.name %><br>
-          <strong>Date de début :</strong> <%= reservation.start_date %><br>
-          <strong>Date de fin :</strong> <%= reservation.end_date %><br>
-          <strong>Status :</strong> <%= reservation.status %><br>
+          <strong>Status :</strong> <%= reservation.status.capitalize %><br>
           <strong>Prix :</strong> <%= number_to_currency(reservation.price, unit: '€') %>
-        </li>
+          <div class="d-flex">
+            <% if reservation.status == "attente" %>
+              <%= link_to "Accepter", accept_my_van_reservation_path(reservation), data: {turbo_method: :patch}, class: "btn btn-primary" %> <br>
+              <%= link_to "Refuser", reject_my_van_reservation_path(reservation), data: {turbo_method: :patch}, class: "btn btn-danger" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
       <% end %>
-    </ul>
+    </div>
   <% else %>
     <p>Vous n'avez pas encore de réservations pour vos vans.</p>
   <% end %>

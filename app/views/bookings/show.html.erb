@@ -20,6 +20,9 @@
             <li><strong>Prix: </strong><%= @booking.price.to_i %>€</li>
           </ul>
         </div>
+        <div class="card-footer">
+          <%= link_to 'Annuler la réservation', booking_cancel_path(@booking), data: { turbo_method: :patch}, class: 'btn-delete' %>
+        </div>
       </div>
     </div>
   </div>

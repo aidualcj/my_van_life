@@ -58,7 +58,6 @@ van4.photos.attach(io: file4, filename: "van4.jpg", content_type: "image/jpeg")
 van4.save
 file4.close
 
-
 puts "Vans Terminée"
 
 # Créer les reviews
@@ -71,7 +70,7 @@ puts "Reviews Terminée"
 
 # Créer les bookings
 puts "Creation bookings..."
-booking1 = Booking.create!(start_date: "2021-12-01", end_date: "2021-12-10", status: "refusée", user_id: User.first.id, van_id: Van.first.id, price: van1.price_per_day * 10)
+booking1 = Booking.create!(start_date: "2024-01-01", end_date: "2024-12-12", status: "acceptée", user_id: User.first.id, van_id: Van.first.id, price: van1.price_per_day * 10)
 booking2 = Booking.create!(start_date: "2023-12-12", end_date: "2023-12-20", status: "annulée", user_id: User.first.id, van_id: Van.first.id, price: van2.price_per_day * 10)
 booking3 = Booking.create!(start_date: "2024-05-01", end_date: "2024-05-10", status: "terminée", user_id: User.last.id, van_id: Van.last.id, price: van3.price_per_day * 10)
 booking4 = Booking.create!(start_date: "2024-08-01", end_date: "2024-08-05", status: "attente", user_id: User.last.id, van_id: Van.last.id, price: van4.price_per_day * 10)

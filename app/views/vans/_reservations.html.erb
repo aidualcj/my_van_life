@@ -1,0 +1,15 @@
+<div class="card m-3 bg-white" id="reservation_<%= reservation.id %>">
+  <div class="card-body">
+    <p><strong>Du <%= reservation.start_date %> au <%= reservation.end_date %></strong></p>
+    <strong><%= reservation.van.title %> </strong><%= link_to "(Détail de mon van)", van_path(reservation.van) %> <br>
+    <strong>Client :</strong> <%= reservation.user.name %><br>
+    <strong>Status :</strong> <%= reservation.status.capitalize %><br>
+    <strong>Prix :</strong> <%= number_to_currency(reservation.price, unit: '€') %>
+    <div class="d-flex">
+      <% if reservation.status == "attente" %>
+        <%= link_to "Accepter", accept_my_van_reservation_path(reservation), data: { turbo_method: :patch, turbo_confirm: "Êtes-vous sûr de vouloir accepter cette réservation ?" }, class: "btn btn-primary" %> <br>
+        <%= link_to "Refuser", reject_my_van_reservation_path(reservation), data: { turbo_method: :patch, turbo_confirm: "Êtes-vous sûr de vouloir refuser cette réservation ?" }, class: "btn btn-danger" %>
+      <% end %>
+    </div>
+  </div>
+</div>

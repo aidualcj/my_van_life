@@ -50,6 +50,11 @@ class BookingsController < ApplicationController
     @bookings = current_user.bookings
   end
 
+  def cancel
+    @booking = Booking.find(params[:booking_id])
+    @booking.update(status: "annulée")
+    redirect_to van_bookings_path(@booking.van), notice: 'La réservation a été annulée.'
+  end
   private
 
   def set_booking
