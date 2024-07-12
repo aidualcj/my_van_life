@@ -29,7 +29,7 @@
             <p><%= booking.van.description %></p>
             <p class="price"><%= number_to_currency(booking.price, unit: '€', precision: 0) %>/jour</p>
             <p>Ce van est loué par : <%= booking.van.user.name %></p>
-            <%= link_to "Voir mon van", van_path(booking.van), class: "btn btn-primary" %>
+            <%= link_to "Voir ma réservation", booking_path(booking), class: "btn btn-primary" %>
           </div>
         </div>
       <% end %>

@@ -47,7 +47,7 @@ class VansController < ApplicationController
 
   def update
     @van.user = current_user
-    @van.status = "available"
+    @van.status = "disponible"
     if @van.update(van_params)
       redirect_to @van, notice: 'Votre van est beaux comme un camion'
     else

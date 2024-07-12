@@ -16,7 +16,7 @@
             <h3><%= van.title %> - <%= van.status.capitalize %></h3>
             <div class="van-actions">
               <%= link_to 'Éditer ce Van', edit_van_path(van), class: 'btn-edit' %>
-              <%= link_to 'Supprimer ce Van', van_path(van), method: :delete, data: { confirm: 'Êtes-vous sûr?' }, class: 'btn-delete' %>
+              <%= link_to 'Supprimer ce Van', my_vans_path(van), data: { confirm: 'Êtes-vous sûr?', turbo_method: :delete }, class: 'btn-delete' %>
             </div>
             <p><%= van.description %></p>
             <p class="price"><%= number_to_currency(van.price_per_day, unit: '€', precision: 0) %>/jour</p>
