@@ -67,7 +67,7 @@ file5.close
 
 file_path5 = Rails.root.join('app/assets/images/van5.jpg')
 file5 = File.open(file_path5)
-van6 = Van.create!(title:"Combi", description:"Idéal pour vos roadtrips dans toute la France. Il sera vous ravir par son ergonomie et son optimisation. Nombre maximum de personne : 4", price_per_day: 100, user_id: User.last.id, status:'disponible', location:"Paris", longitude: 4.8467100, latitude: 45.7484600)
+van6 = Van.create!(title:"Combi", description:"Idéal pour vos roadtrips dans toute la France. Il sera vous ravir par son ergonomie et son optimisation. Nombre maximum de personne : 4", price_per_day: 100, user_id: User.last.id, status:'disponible', location:"Paris", longitude: 2.3522219, latitude: 48.8566140)
 van6.photos.attach(io: file5, filename: "van5.jpg", content_type: "image/jpeg")
 van6.save
 file5.close
