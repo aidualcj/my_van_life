@@ -1,0 +1,47 @@
+// reservations.scss
+
+.reservation-container {
+  max-width: 1200px; // Largeur maximale du conteneur
+  margin: 0 auto; // Centre le conteneur
+  padding: 20px; // Espace autour
+  align-self: center;
+}
+
+.reservation-list {
+  display: flex;
+  flex-direction: column; // Aligne les cartes les unes sous les autres
+}
+
+.user-reservation-card {
+  display: flex; // Utilise Flexbox pour aligner la photo et les détails
+  background-color: #f9f9f9; // Couleur de fond pour chaque carte
+  border: 1px solid #ddd; // Bordure légère
+  border-radius: 8px; // Coins arrondis
+  padding: 15px; // Espace à l'intérieur de la carte
+  margin-bottom: 15px; // Espace entre les cartes
+  width: 100%; // Prend toute la largeur du conteneur
+  max-width: 1000px; // Largeur maximale pour chaque carte
+}
+
+.user-reservation-card img {
+  max-width: 150px; // Taille maximum de l'image
+  margin-right: 15px; // Espace entre l'image et le texte
+}
+
+.reservation-details {
+  flex: 1; // Permet à la section des détails de prendre tout l'espace disponible
+}
+
+.delete-button {
+  position: relative; // Positionnement relatif pour pouvoir utiliser absolu
+  float: right; // Aligne le bouton à droite
+  background: none; // Enlève le fond par défaut
+  border: none; // Enlève la bordure
+  color: red; // Couleur rouge pour le bouton
+  font-size: 24px; // Taille du bouton
+  cursor: pointer; // Change le curseur
+}
+
+.text-center {
+  text-align: center; // Centre le texte
+}

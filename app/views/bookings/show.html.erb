@@ -1,12 +1,17 @@
-<div class="container mt-5">
-  <div class="row">
-    <div class="col-md-8">
-      <div class="card">
-        <div class="card-header">
-          <h3>Reservation validée</h3>
-        </div>
+<div class="container-full">
+  <div class="row justify-content-center">
+    <div class="col-12 text-center booking-info-title">
+      <h1 class="page-title">
+        Réservation validée <i class="fas fa-check text-success"></i>
+      </h1>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-md-8 offset-md-2">
+      <div class="card custom-booking-info-card">
         <div class="card-body">
-          <h5>Vos informations</h5>
+          <h5 class="custom-card-title">Vos informations</h5>
           <ul class="list-unstyled">
             <li><strong>Nom:</strong> <%= @booking.user.name %></li>
             <li><strong>Téléphone:</strong> <%= @booking.user.phone_number %></li>
@@ -16,19 +21,43 @@
           </ul>
         </div>
         <div class="card-footer">
-          <%= link_to 'Modifier les informations', edit_user_registration_path, class: 'btn btn-secondary' %>
           <%= link_to 'Annuler la réservation', booking_cancel_path(@booking), data: { turbo_method: :patch}, class: 'btn-delete' %>
         </div>
       </div>
     </div>
-    <div class="col-md-4">
-      <div class="card">
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-md-8 offset-md-2">
+      <div class="van-card card bg-light">
         <div class="card-body">
           <% if @booking.van.photos.attached? %>
-            <%= cl_image_tag @booking.van.photos.key, class: "img-fluid"%>
+            <%= cl_image_tag @booking.van.photos.key, class: "img-fluid", alt: 'Van Photo' %>
           <% else %>
-            <%= image_tag 'roadpass-zRetWvOnbf0-unsplash.jpg', class: "img-fluid" %>
+            <%= image_tag 'roadpass-zRetWvOnbf0-unsplash.jpg', class: "img-fluid", alt: 'Van Photo' %>
           <% end %>
+          <div class="van-details">
+            <h5 class="card-title"><%= @booking.van.title %></h5>
+            <p class="card-text"><%= @booking.van.description %></p>
+            <p class="card-text price mb-0 van-price"><%= number_to_currency(@booking.van.price_per_day, unit: '€', precision: 0) %>/jour</p>
+            <div class="van-reviews">
+              <h2>Avis</h2>
+              <% if @booking.van.reviews.any? %>
+                <% @booking.van.reviews.each do |review| %>
+                  <div class="review">
+                    <div class="review-stars">
+                      <% (1..5).each do |i| %>
+                        <span class="star <%= 'filled' if review.rating >= i %>">★</span>
+                      <% end %>
+                    </div>
+                    <p><%= review.comment %></p>
+                  </div>
+                <% end %>
+              <% else %>
+                <p><em>Aucun avis pour le moment</em></p>
+              <% end %>
+            </div>
+          </div>
         </div>
       </div>
     </div>
