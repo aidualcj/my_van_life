@@ -46,7 +46,7 @@ file2.close
 
 file_path3 = Rails.root.join('app/assets/images/van3.jpg')
 file3 = File.open(file_path3)
-van3 = Van.create!(title:"Camping car Fiat", description:"Pour des vacances ensoleillées, louez mon camping car Fiat pour de belles aventures.", price_per_day: 70, user_id: User.last.id, status:'réservé', location:"Bordeaux", longitude: -0.5791800, latitude: 44.8404400)
+van3 = Van.create!(title:"Camping car Fiat", description:"Pour des vacances ensoleillées, louez mon camping car Fiat pour de belles aventures. Ce fidèle compagnon saura vous accompagner tout au long de votre voyage.", price_per_day: 70, user_id: User.last.id, status:'réservé', location:"Bordeaux", longitude: -0.5791800, latitude: 44.8404400)
 van3.photos.attach(io: file3, filename: "van3.jpg", content_type: "image/jpeg")
 van3.save
 file3.close
@@ -87,8 +87,7 @@ puts "Creation bookings..."
 booking1 = Booking.create!(start_date: "2024-01-01", end_date: "2024-12-12", status: "acceptée", user_id: User.first.id, van_id: Van.first.id, price: van1.price_per_day * 10)
 booking2 = Booking.create!(start_date: "2023-12-12", end_date: "2023-12-20", status: "annulée", user_id: User.first.id, van_id: Van.first.id, price: van2.price_per_day * 10)
 booking3 = Booking.create!(start_date: "2024-05-01", end_date: "2024-05-10", status: "terminée", user_id: User.last.id, van_id: Van.last.id, price: van3.price_per_day * 10)
-booking4 = Booking.create!(start_date: "2024-08-01", end_date: "2024-08-05", status: "accpetée", user_id: User.last.id, van_id: Van.last.id, price: van4.price_per_day * 10)
-
+booking4 = Booking.create!(start_date: "2024-08-01", end_date: "2024-08-05", status: "acceptée", user_id: User.last.id, van_id: Van.last.id, price: van4.price_per_day * 10)
 
 puts "Bookings Terminée"
 
