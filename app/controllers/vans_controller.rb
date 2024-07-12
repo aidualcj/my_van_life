@@ -57,8 +57,9 @@ class VansController < ApplicationController
   end
 
   def destroy
+    raise
     @van.destroy
-    redirect_to vans_url, notice: 'Votre van est de retour au garage'
+    redirect_to my_vans_path, notice: 'Votre van est de retour au garage'
   end
 
   def my_vans
