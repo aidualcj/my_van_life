@@ -2,7 +2,11 @@
   <div class="row justify-content-center">
     <div class="col-12 text-center booking-info-title">
       <h1 class="page-title">
-        Réservation validée <i class="fas fa-check text-success"></i>
+        <% if @booking.status == "annulée" %>
+          Réservation Annulée <i class="fa-solid fa-xmark text-danger"></i>
+        <% else %>
+          Réservation Validée <i class="fas fa-check text-success"></i>
+        <% end %>
       </h1>
     </div>
   </div>
@@ -10,7 +14,7 @@
   <div class="row mt-4">
     <div class="col-md-8 offset-md-2">
       <div class="card custom-booking-info-card">
-  <div class="card-header">
+        <div class="card-header">
           <h3>Reservation <%=@booking.status == "annulée"? "annulée" : "validée"%></h3>
         </div>
         <div class="card-body">
@@ -24,7 +28,11 @@
           </ul>
         </div>
         <div class="card-footer">
-          <%= link_to 'Annuler la réservation', booking_cancel_path(@booking), data: { turbo_method: :patch}, class: 'btn-delete' %>
+          <% if @booking.status == "annulée" %>
+            <%= link_to 'Mes réservations', my_bookings_path(@booking) %>
+          <% else %>
+            <%= link_to 'Annuler la réservation', booking_cancel_path(@booking), data: { turbo_method: :patch}, class: 'btn-delete' %>
+          <% end %>
         </div>
       </div>
     </div>
